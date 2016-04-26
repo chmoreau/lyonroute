@@ -2,9 +2,12 @@
 <p-checkbox [(ngModel)]="value"></p-checkbox>
 <button pButton type="button" label="Click" (click)="onclick()"></button>
 
-<p-radioButton name="groupname" value="val1" [(ngModel)]="selectedValue"></p-radioButton>
-<p-radioButton name="groupname" value="val2" [(ngModel)]="selectedValue"></p-radioButton>
 
+<p-dialog header="Title" [(visible)]="display">
+    content
+    <button pButton type="button">test</button>
+
+</p-dialog>
 
 
 
