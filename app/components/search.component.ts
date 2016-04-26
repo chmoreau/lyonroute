@@ -1,46 +1,61 @@
 import {Component,OnInit} from 'angular2/core';
 import {AppService} from '../services/app.service'
 import {Place} from '../models/place'
-import {Checkbox, Button, RadioButton, Dialog, AutoComplete} from 'primeng/primeng';
+import { Router } from 'angular2/router';
+
+import {AutoComplete} from 'primeng/primeng';
+import {MdCheckbox} from '@angular2-material/checkbox';
+import {MdButton} from '@angular2-material/button';
+import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
+import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
+import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
+
 
 @Component({
 	selector: 'search-component',
 	templateUrl: 'app/templates/search.component.html',
-	directives: [Checkbox, Button, RadioButton, Dialog, AutoComplete],
-	providers: [AppService]
-
+	styleUrls: ['app/styles/search.component.css'],
+	directives: [MdButton, MD_INPUT_DIRECTIVES, MD_CARD_DIRECTIVES, AutoComplete],
 })
 export class SearchComponent implements OnInit {
-	value: boolean = true;
-	display: boolean = false;
-	selectedValue: string;
-	options: any;
 
 	selectedPlace: any;
-	filteredPlaces: Place[];
-
-
+	filteredDepartures: Place[];
+	filteredArrivals: Place[];
+	departure: string;
+	arrival: string;
 	places: Place[];
 	errorMessage: any;
 
-	constructor(private _appService: AppService) { }
+	constructor(private _appService: AppService, private _router: Router, ) { }
 
-	onclick() {
-		console.log("click");
-		this.display=true;
+	filterDepartures(term: string) {
+		this.filteredDepartures = this.searchPlaces(term);
 	}
 
-	filterPlaces(event) {
+	filterArrivals(term: string) {
+		this.filteredArrivals = this.searchPlaces(term);
+	}
+
+	gotoOffers() {
+		if(this.departure && this.arrival) {
+			let link = ['Offers', { departure: this.departure, arrival: this.arrival }];
+			this._router.navigate(link);
+		}
+		
+	}
+	searchPlaces(query) {
 		//in a real application, make a request to a remote url with the query and return filtered results, for demo we filter at client side
-		let query = event.query;
         let filtered: any[] = [];
-        for (let i = 0; i < this.places.length; i++) {
-            let place = this.places[i];
-            if (place.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-                filtered.push(place);
-            }
+        if(query.length != 0) {
+			for (let i = 0; i < this.places.length; i++) {
+				let place = this.places[i];
+				if (place.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+					filtered.push(place);
+				}
+			}
         }
-        this.filteredPlaces = filtered;
+        return filtered;
 	}
 
 	ngOnInit() {

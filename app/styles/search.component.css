@@ -1,0 +1,36 @@
+.full-width {
+	width: 100% !important;
+}
+
+.autocomplete {
+	border: 1px solid grey;
+	height: 24px;
+	padding-left:18px;
+}
+.autocomplete:hover {
+	background-color: grey;
+	cursor: pointer;
+}
+
+md-card {
+	margin: 5px;
+}
+
+.light {
+	color: white;
+}
+
+.drive {
+	color: white;
+	background-color: #3F51B5;
+}
+
+.flex-space-between {
+	display: flex;
+	justify-content: space-between;
+}
+
+.flex-end {
+	display: flex;
+	justify-content: flex-end;
+}

@@ -1,8 +1,9 @@
 <html>
   <head>
+    <base href="/">
     <title>Angular 2 QuickStart</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="stylesC.css">
+    <link rel="stylesheet" href="styles.css">
     <!-- 1. Load libraries -->
     <!-- IE required polyfills, in this exact order -->
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
@@ -11,6 +12,8 @@
     <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="node_modules/primeui/themes/delta/theme.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -22,11 +25,42 @@
       System.config({
         defaultJSExtensions: true,
             packages: {
-                'app': {"defaultExtension": 'js'}
+                'app': {"defaultExtension": 'js'},
+                 '@angular2-material/core': {
+                    format: 'cjs',
+                    defaultExtension: 'js',
+                    main: 'core.js'
+                  },
+                  '@angular2-material/checkbox': {
+                    format: 'cjs',
+                    defaultExtension: 'js',
+                    main: 'checkbox.js'
+                  },
+                  '@angular2-material/input': {
+                    format: 'cjs',
+                    defaultExtension: 'js',
+                    main: 'input.js'
+                  },
+                  '@angular2-material/card': {
+                    format: 'cjs',
+                    defaultExtension: 'js',
+                    main: 'card.js'
+                  },
+                  '@angular2-material/button': {
+                    format: 'cjs',
+                    defaultExtension: 'js',
+                    main: 'button.js'
+                  },
+                  '@angular2-material/list': {
+                    format: 'cjs',
+                    defaultExtension: 'js',
+                    main: 'list.js'
+                  },
             },
             map: {
                 'angular2': 'node_modules/angular2',
-                'primeng': 'node_modules/primeng'
+                'primeng': 'node_modules/primeng',
+                '@angular2-material' : 'node_modules/@angular2-material'
             }
       });
       System.import('app/main')
@@ -36,6 +70,7 @@
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
     <script src="node_modules/angular2/bundles/http.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
 
   </head>
   <!-- 3. Display the application -->
