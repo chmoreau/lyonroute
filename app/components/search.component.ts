@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
 	places: Place[];
 	errorMessage: any;
 
-	constructor(private _appService: AppService, private _router: Router, ) { }
+	constructor(private _appService: AppService, private _router: Router ) { }
 
 	filterDepartures(term: string) {
 		this.filteredDepartures = this.searchPlaces(term);
