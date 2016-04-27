@@ -1,1 +1,35 @@
 From {{departure}} to {{arrival}}, what a nice journey.
+
+<md-card>
+<md-list>
+   <md-list-item *ngFor="#offer of offers">  
+   	<img md-list-avatar style="background: grey;"src="" alt="...">
+
+   	<div class="container" style="width: 100%;">
+   		<div class="left">
+   			<span>{{offer.driverName}}</span>
+   			<br/>
+   			<div class="subtext">
+	   			<span>{{offer.driverAge}} ans</span>
+	   			<br/>
+	   			<span>{{offer.driverRating}}/5</span>
+   			</div>
+   		</div>
+   		<div class="middle" style="flex-grow: 3;">
+   			<strong>{{offer.fullDate}}</strong>
+   			<br/>
+   			<span>Trajet de {{offer.fullDuration}}</span>
+   			<br/>
+   			<span class="subtext">Véhicule : {{offer.car}}</span>
+   		</div>
+   		<div class="right">
+   			<span>{{offer.seatsAvailable}} places restantes</span>
+   		</div>
+   	</div>
+
+
+
+   		
+   </md-list-item>
+</md-list>
+</md-card>

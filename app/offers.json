@@ -1,0 +1,26 @@
+{
+	"data": [
+		{
+			"driverName":"Afanasie",
+			"driverAge": 22,
+			"driverRating" : 3.4,
+			"fullDate": "26 vendredi à 8h",
+			"from": "Villeurbanne",
+			"to": "Part-Dieu",
+			"fullDuration" : "20min",
+			"seatsAvailable" : 3,
+			"car" : "Renault r5"
+		},
+		{
+			"driverName":"Not Afanasie",
+			"driverAge": 22,
+			"driverRating": 4.8,
+			"fullDate": "26 vendredi à 8h",
+			"from": "Villeurbanne",
+			"to": "Part-Dieu",
+			"fullDuration" : "20min",
+			"seatsAvailable" : 3,
+			"car" : "Renault r5"
+		}
+	]
+}
