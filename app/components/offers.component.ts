@@ -61,4 +61,8 @@ export class OffersComponent implements OnInit {
 			offers => this.offers = offers,
 			error => this.errorMessage = <any>error);
 	}
+
+	getDate(date: any){
+		return new Date(date);
+	}
 }

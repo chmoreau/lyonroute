@@ -9,7 +9,7 @@
 	<md-nav-list>
 		<h3 md-subheader>{{offers?.length}} offres de covoiturage</h3>
 	   <a md-list-item *ngFor="#offer of offers">  
-	   	<img md-list-avatar src="img/route.jpg" alt="...">
+	   	<img md-list-avatar src="img/pp.png" alt="...">
 
 	   	<div class="container" style="width: 100%;">
 	   		<div class="header item">
@@ -22,7 +22,7 @@
 	   			</div>
 	   		</div>
 	   		<div class="middle item">
-	   			<strong>{{offer.fullDate}}</strong>
+	   			<strong>{{getDate(offer.fullDate) | date:"dd/MM hh:mm"}}</strong>
 	   			<br/>
 	   			<span class="primary-bold">{{offer.fullDuration}} min</span>
 	   			<br/>
