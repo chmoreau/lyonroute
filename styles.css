@@ -8,22 +8,39 @@ button {
 }
 
 .container {
-	background: grey;
-  	display: flex; /* or inline-flex */	
-  	justify-content: space-between;
+  display: flex; /* or inline-flex */	
 }
 
-.left {
-	flex-grow: 4;
-}
-.right {
-	flex-grow: 1;
-}
 .subtext {
-	font-size: 80%;
+	font-size: 80% !important;
 }
 
 .middle {
-	padding-left: 24px	;
-	flex-grow: 1;
+  flex-grow: 4;
+}
+
+.item {
+}
+
+.header {
+  flex-basis: 120px;
+  padding-left: 4px;
+}
+.header-img {
+  background-color: grey;
+  height: 40px;
+  width: 40px;
+}
+
+.primary-bold {
+  font-weight: bold;
+  color: 3F51B5;
+}
+
+.accent-bold {
+  font-weight: bold;
+  color: FF6D00;
+}
+.md-list-item {
+  margin-bottom: 8px;
 }

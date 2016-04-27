@@ -5,7 +5,7 @@ export class Offer {
 	fullDate: string;
 	from: string;
 	to: string;
-	fullDuration: string;
+	fullDuration: number;
 	seatsAvailable: number;
 	car: string;
 }

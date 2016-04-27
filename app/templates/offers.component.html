@@ -1,35 +1,37 @@
-From {{departure}} to {{arrival}}, what a nice journey.
-
 <md-card>
-<md-list>
-   <md-list-item *ngFor="#offer of offers">  
-   	<img md-list-avatar style="background: grey;"src="" alt="...">
+	<md-card-title>Résultats pour le trajet {{departure | uppercase}} - {{arrival | uppercase}}</md-card-title>
+	Trier par...
+	<md-radio-group>
+	  <md-radio-button value="duration" (change)="onChangeSort($event)">Durée du trajet</md-radio-button>
+	  <md-radio-button value="rating" (change)="onChangeSort($event)" >Note</md-radio-button>
+	  <md-radio-button value="seats" (change)="onChangeSort($event)">Nombre de places</md-radio-button>
+	</md-radio-group>
+	<md-nav-list>
+		<h3 md-subheader>{{offers?.length}} offres de covoiturage</h3>
+	   <a md-list-item *ngFor="#offer of offers">  
+	   	<img md-list-avatar src="img/route.jpg" alt="...">
 
-   	<div class="container" style="width: 100%;">
-   		<div class="left">
-   			<span>{{offer.driverName}}</span>
-   			<br/>
-   			<div class="subtext">
-	   			<span>{{offer.driverAge}} ans</span>
+	   	<div class="container" style="width: 100%;">
+	   		<div class="header item">
+	   			<span>{{offer.driverName}}</span>
 	   			<br/>
-	   			<span>{{offer.driverRating}}/5</span>
-   			</div>
-   		</div>
-   		<div class="middle" style="flex-grow: 3;">
-   			<strong>{{offer.fullDate}}</strong>
-   			<br/>
-   			<span>Trajet de {{offer.fullDuration}}</span>
-   			<br/>
-   			<span class="subtext">Véhicule : {{offer.car}}</span>
-   		</div>
-   		<div class="right">
-   			<span>{{offer.seatsAvailable}} places restantes</span>
-   		</div>
-   	</div>
-
-
-
-   		
-   </md-list-item>
-</md-list>
+	   			<div>
+		   			<span class="subtext">{{offer.driverAge}} ans</span>
+		   			<br/>
+		   			<span>{{offer.driverRating}}<i class="material-icons subtext">star</i></span>
+	   			</div>
+	   		</div>
+	   		<div class="middle item">
+	   			<strong>{{offer.fullDate}}</strong>
+	   			<br/>
+	   			<span class="primary-bold">{{offer.fullDuration}} min</span>
+	   			<br/>
+	   			<span class="subtext">Véhicule : <span class="primary-bold">{{offer.car}}</span></span>
+	   		</div>
+	   		<div class="right item">
+	   			<span class="accent-bold">{{offer.seatsAvailable}} places</span>
+	   		</div>
+	   	</div>		
+	   </a>
+	</md-nav-list>
 </md-card>

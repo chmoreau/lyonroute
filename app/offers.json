@@ -7,19 +7,41 @@
 			"fullDate": "26 vendredi à 8h",
 			"from": "Villeurbanne",
 			"to": "Part-Dieu",
-			"fullDuration" : "20min",
-			"seatsAvailable" : 3,
+			"fullDuration" : 10,
+			"seatsAvailable" : 4,
 			"car" : "Renault r5"
 		},
 		{
-			"driverName":"Not Afanasie",
+			"driverName":"Razvan",
 			"driverAge": 22,
-			"driverRating": 4.8,
+			"driverRating": 2.1,
 			"fullDate": "26 vendredi à 8h",
 			"from": "Villeurbanne",
 			"to": "Part-Dieu",
-			"fullDuration" : "20min",
-			"seatsAvailable" : 3,
+			"fullDuration" : 70,
+			"seatsAvailable" : 5,
+			"car" : "Renault r5"
+		},
+		{
+			"driverName":"Orlando",
+			"driverAge": 22,
+			"driverRating": 0.2,
+			"fullDate": "26 vendredi à 8h",
+			"from": "Villeurbanne",
+			"to": "Part-Dieu",
+			"fullDuration" : 20,
+			"seatsAvailable" : 1,
+			"car" : "Renault r5"
+		},
+		{
+			"driverName":"Charles",
+			"driverAge": 22,
+			"driverRating": 0,
+			"fullDate": "26 vendredi à 8h",
+			"from": "Villeurbanne",
+			"to": "Part-Dieu",
+			"fullDuration" : 4,
+			"seatsAvailable" : 78,
 			"car" : "Renault r5"
 		}
 	]
