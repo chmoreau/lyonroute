@@ -20,9 +20,7 @@
 	        		<span md-prefix><i class="material-icons app-input-icon">place</i></span>
 				</md-input>
 
-				<ul>
-					<li *ngFor="#place of filteredArrivals">{{place.name}}</li>
-				</ul>
+				<div class="autocomplete" *ngFor="#place of filteredArrivals">{{place.name}}</div>
 				<div class="flex-end"> 
 					<button  md-raised-button color="primary" (click)="gotoOffers()">rechercher</button>
 				</div>

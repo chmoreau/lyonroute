@@ -1,5 +1,6 @@
 import {Injectable} from 'angular2/core';
 import {Place} from '../models/place';
+import {Offer} from '../models/offer';
 import {Http, Response} from 'angular2/http';
 import {Observable}     from 'rxjs/Observable';
 
@@ -8,8 +9,16 @@ export class AppService {
 	constructor(private http: Http) { }
 	private _apiUrl = 'app/dummy.json';  // URL to web api
 
+	private _offersApi = 'app/offers.json';
+
 	getPlaces(): Observable<Place[]> {
 		return this.http.get(this._apiUrl)
+			.map(this.extractData)
+			.catch(this.handleError);
+	}
+
+	getOffers(): Observable<Offer[]> {
+		return this.http.get(this._offersApi)
 			.map(this.extractData)
 			.catch(this.handleError);
 	}

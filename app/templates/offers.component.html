@@ -1,1 +1,37 @@
-From {{departure}} to {{arrival}}, what a nice journey.
+<md-card>
+	<md-card-title>Résultats pour le trajet {{departure | uppercase}} - {{arrival | uppercase}}</md-card-title>
+	Trier par...
+	<md-radio-group>
+	  <md-radio-button value="duration" (change)="onChangeSort($event)">Durée du trajet</md-radio-button>
+	  <md-radio-button value="rating" (change)="onChangeSort($event)" >Note</md-radio-button>
+	  <md-radio-button value="seats" (change)="onChangeSort($event)">Nombre de places</md-radio-button>
+	</md-radio-group>
+	<md-nav-list>
+		<h3 md-subheader>{{offers?.length}} offres de covoiturage</h3>
+	   <a md-list-item *ngFor="#offer of offers">  
+	   	<img md-list-avatar src="img/pp.png" alt="...">
+
+	   	<div class="container" style="width: 100%;">
+	   		<div class="header item">
+	   			<span>{{offer.driverName}}</span>
+	   			<br/>
+	   			<div>
+		   			<span class="subtext">{{offer.driverAge}} ans</span>
+		   			<br/>
+		   			<span>{{offer.driverRating}}<i class="material-icons subtext">star</i></span>
+	   			</div>
+	   		</div>
+	   		<div class="middle item">
+	   			<strong>{{getDate(offer.fullDate) | date:"dd/MM hh:mm"}}</strong>
+	   			<br/>
+	   			<span class="primary-bold">{{offer.fullDuration}} min</span>
+	   			<br/>
+	   			<span class="subtext">Véhicule : <span class="primary-bold">{{offer.car}}</span></span>
+	   		</div>
+	   		<div class="right item">
+	   			<span class="accent-bold">{{offer.seatsAvailable}} places</span>
+	   		</div>
+	   	</div>		
+	   </a>
+	</md-nav-list>
+</md-card>

@@ -1,9 +1,9 @@
 {
 	"data" : [
-		{"id": 1, "name": "A", "lat": 10, "lon": 10},
-		{"id": 2, "name": "B", "lat": 10, "lon": 10},
-		{"id": 3, "name": "B", "lat": 10, "lon": 10},
-		{"id": 4, "name": "C", "lat": 10, "lon": 10},
-		{"id": 5, "name": "D", "lat": 10, "lon": 10}
+		{"id": 1, "name": "Part-Dieu", "lat": 10, "lon": 10},
+		{"id": 2, "name": "Part-Dieu 2", "lat": 10, "lon": 10},
+		{"id": 3, "name": "Villeurbanne", "lat": 10, "lon": 10},
+		{"id": 4, "name": "Tassin la demi lune", "lat": 10, "lon": 10},
+		{"id": 5, "name": "Belle cour", "lat": 10, "lon": 10}
 	]
 }
