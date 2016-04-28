@@ -21,14 +21,33 @@
 				</md-input>
 
 				<div class="autocomplete" *ngFor="#place of filteredArrivals">{{place.name}}</div>
+			</md-card>
+
+			<md-card>
+				<md-card-title>Date et horaire</md-card-title>
+					    <md-checkbox (change)="todo.completed = $event">
+      				Aller-Retour
+    					</md-checkbox>
+					<div class="ui-grid">
+						   <div class="ui-grid-row">
+						   		<div class="ui-grid-col-6">
+		            <h3>Aller</h3>
+		            <p-calendar [(ngModel)]="date11" dateFormat="mm/dd/yy" timeFormat="hh:mm tt z" timeControlType="select" [horizontalTimeControls]="true"></p-calendar>   
+		            			</div>
+		           				 <div class="ui-grid-col-6">
+		            <h3>Retour</h3>
+		            <p-calendar [(ngModel)]="date11" dateFormat="mm/dd/yy" timeFormat="hh:mm tt z" timeControlType="select" [horizontalTimeControls]="true"></p-calendar>   
+		            			</div>
+  							</div>
+		        	</div>
+			</md-card>
+
+				<md-card>
 				<div class="flex-end"> 
 					<button  md-raised-button color="primary" (click)="gotoOffers()">rechercher</button>
 				</div>
 
-				
 			</md-card>
-
-			
         </div>
         <div class="ui-grid-col-3"></div>
     </div>

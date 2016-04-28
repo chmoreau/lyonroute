@@ -3,17 +3,18 @@ import {AppService} from '../services/app.service'
 import {Place} from '../models/place'
 import { Router } from 'angular2/router';
 
-import {AutoComplete} from 'primeng/primeng';
+import {AutoComplete, Calendar} from 'primeng/primeng';
 import {MdButton} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
+import {MdCheckbox} from '@angular2-material/checkbox';
 
 
 @Component({
 	selector: 'search-component',
 	templateUrl: 'app/templates/search.component.html',
 	styleUrls: ['app/styles/search.component.css'],
-	directives: [MdButton, MD_INPUT_DIRECTIVES, MD_CARD_DIRECTIVES, AutoComplete],
+	directives: [MdButton, MD_INPUT_DIRECTIVES, MD_CARD_DIRECTIVES, AutoComplete, Calendar,MdCheckbox],
 })
 export class SearchComponent implements OnInit {
 
