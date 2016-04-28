@@ -8,7 +8,7 @@ src="https://www.google.com/maps/embed/v1/directions?origin={{departure}}&destin
 
 })
 export class MapComponent implements OnInit {
-	@Input('key') apiKey: string;
+	@Input('key') apiKey: string = "AIzaSyBAAJraPqzJLeidBDQZz_-izHgc9mP-0Bw";
 	@Input('from') departure: string;
 	@Input('to') arrival: string;
 	@Input() waypoints: string[];
