@@ -1,56 +1,46 @@
 <div class="ui-grid">
-    <div class="ui-grid-row">
-        <div class="ui-grid-col-3"></div>
-        <div class="ui-grid-col-6">
-       		<md-card class="drive">
-			   <md-card-title class="flex-space-between"><span>Vous conduisez ?</span>
-			   	<button md-raised-button color="accent">Proposer un trajet</button>
-			   </md-card-title>
-			</md-card>
-			<md-card>
-				<md-card-title>Trouvez votre covoiturage</md-card-title>
-				<img md-card-image class="cover-img" src="img/route.jpg">
-   				<md-input (keyup)="filterDepartures(departure)" placeholder="Départ" class="full-width" [(ngModel)]="departure">
-        			<span md-prefix><i class="material-icons app-input-icon">home</i></span>
-				</md-input>
-			
-				<div class="autocomplete" *ngFor="#place of filteredDepartures">{{place.name}}</div>
-				    
-				<md-input (keyup)="filterArrivals(arrival)" placeholder="Arrivée" class="full-width" [(ngModel)]="arrival">
-	        		<span md-prefix><i class="material-icons app-input-icon">place</i></span>
-				</md-input>
+	<div class="ui-grid-row">
+		<div class="ui-grid-col-3"></div>
+		<div class="ui-grid-col-6">
+			<md-card class="drive">
+			<md-card-title class="flex-space-between"><span>Vous conduisez ?</span>
+			<button md-raised-button (click)="gotoMakeOffer()" color="accent">Proposer un trajet</button>
+		</md-card-title>
+	</md-card>
+	<md-card>
+	<md-card-title>Trouvez votre covoiturage</md-card-title>
 
-				<div class="autocomplete" *ngFor="#place of filteredArrivals">{{place.name}}</div>
-			</md-card>
+	<img md-card-image class="cover-img" src="img/route.jpg">
 
-			<md-card>
-				<md-card-title>Date et horaire</md-card-title>
-					    <md-checkbox (change)="isActiveRetour=!isActiveRetour">
-      				Aller-Retour
-    					</md-checkbox>
-					<div class="ui-grid">
-						   <div class="ui-grid-row">
-						   		<div class="ui-grid-col-6">
-		            <h3>Aller</h3>
-		            <p-calendar [(ngModel)]="date11" dateFormat="mm/dd/yy" timeFormat="hh:mm tt z" timeControlType="select" [horizontalTimeControls]="true"></p-calendar>   
-		            			</div>
-		           				 <div class="ui-grid-col-6" *ngIf="isActiveRetour">
-		            <h3>Retour</h3>
-		            <p-calendar [(ngModel)]="date11" dateFormat="mm/dd/yy" timeFormat="hh:mm tt z" timeControlType="select" [horizontalTimeControls]="true"></p-calendar>   
-		            			</div>
-  							</div>
-		        	</div>
-			</md-card>
-
-				<md-card>
-				<div class="flex-end"> 
-					<button  md-raised-button color="primary" (click)="gotoOffers()">rechercher</button>
+	<md-card-subtitle>Trajet</md-card-subtitle>
+	<from-to [(arrival)]="_arrival" [(departure)]="_departure"></from-to>
+	<md-card-subtitle style="margin-top: 25px;">Date et horaire</md-card-subtitle>
+	<md-checkbox (change)="isReturn=!isReturn">Aller retour (facultatif)</md-checkbox>
+	<div class="ui-grid">
+		<div class="ui-grid-row">
+			<div class="ui-grid-col-6">
+				<h3>Aller</h3>
+				<div class="container">
+					<i class="material-icons">event</i>
+					<p-calendar placeholder="Date et heure" [(ngModel)]="_date" dateFormat="mm/dd/yy" timeFormat="hh:mm tt" timeControlType="slider" [horizontalTimeControls]="true"></p-calendar>
 				</div>
-
-			</md-card>
-        </div>
-        <div class="ui-grid-col-3"></div>
-    </div>
+			</div>
+			<div class="ui-grid-col-6" *ngIf="isReturn">
+				<h3>Retour</h3>
+				<div class="container">
+					<i class="material-icons">event</i>
+					<p-calendar placeholder="Date et heure de retour" [(ngModel)]="_dateReturn" dateFormat="mm/dd/yy" timeFormat="hh:mm tt" timeControlType="slider" [horizontalTimeControls]="true"></p-calendar>   
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="flex-end" style="margin-top: 5px"> 
+		<button  md-raised-button color="primary" (click)="gotoOffers()">rechercher</button>
+	</div>
+</md-card>
+</div>
+<div class="ui-grid-col-3"></div>
+</div>
 </div>
 
 

@@ -1,4 +1,5 @@
-body { 
+body {
+  margin: 0;
   font-family: 'Roboto', sans-serif;
   background-color: #fafafa;
 }
@@ -17,9 +18,6 @@ button {
 
 .middle {
   flex-grow: 4;
-}
-
-.item {
 }
 
 .header {
@@ -43,4 +41,18 @@ button {
 }
 .md-list-item {
   margin-bottom: 8px;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.fill-space {
+  flex: 1 1 auto;
 }

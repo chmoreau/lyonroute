@@ -2,22 +2,22 @@ import {Component} from 'angular2/core';
 import {SearchComponent} from './components/search.component';
 import {OffersComponent} from './components/offers.component';
 import {OfferRideComponent} from './components/offerRide.component';
-import {MapComponent} from './components/map.component'
 import {MdToolbar} from '@angular2-material/toolbar';
+import {MdButton} from '@angular2-material/button';
 import {AppService} from './services/app.service'
-import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import {Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 
 @Component({
     selector: 'my-app',
 
     template: `<md-toolbar color="primary">
-				  <span>LyonRoute (un service de covoiturage pas comme les autres, non, non)</span>
-				  <a [routerLink]="['Search']">Search</a>
-				  <a [routerLink]="['OfferRide']">OfferRide</a>
+				  <strong>LyonRoute&nbsp;&nbsp;</strong> <span class="subtext">Un service de covoiturage différent des autres (si, si).</span>
+				  <span class="fill-space"></span>
+				  <button  style="color:white" md-button  (click)="_router.navigate(['Search'])">Rechercher</button>
+				  <button  style="color:white" md-button  (click)="_router.navigate(['OfferRide'])">Mes Trajets</button>
 				</md-toolbar>
   				<router-outlet></router-outlet>`,
-    directives: [MapComponent, ROUTER_DIRECTIVES, MdToolbar],
+    directives: [ROUTER_DIRECTIVES, MdToolbar, MdButton],
     providers: [AppService, ROUTER_PROVIDERS]
 })
 
@@ -39,4 +39,12 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
 	}
 ])
 
-export class AppComponent {}
+export class AppComponent {
+	constructor(private _router: Router) {}
+	gotoMyOffer() {
+
+	}
+	gotoSearch() {
+
+	}
+}

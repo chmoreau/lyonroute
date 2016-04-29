@@ -1,71 +1,43 @@
-import {Component,OnInit} from 'angular2/core';
-import {AppService} from '../services/app.service'
+import {Component} from 'angular2/core';
 import {Place} from '../models/place'
-import { Router } from 'angular2/router';
-
-import {AutoComplete, Calendar} from 'primeng/primeng';
+import {Router} from 'angular2/router';
+import {Calendar} from 'primeng/primeng';
 import {MdButton} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
-import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
 import {MdCheckbox} from '@angular2-material/checkbox';
+import {FromToComponent} from './fromTo.component'
 
 
 @Component({
 	selector: 'search-component',
 	templateUrl: 'app/templates/search.component.html',
 	styleUrls: ['app/styles/search.component.css'],
-	directives: [MdButton, MD_INPUT_DIRECTIVES, MD_CARD_DIRECTIVES, AutoComplete, Calendar,MdCheckbox],
+	directives: [FromToComponent, MdButton, MD_CARD_DIRECTIVES, Calendar, MdCheckbox],
 })
-export class SearchComponent implements OnInit {
-
-	selectedPlace: any;
-	filteredDepartures: Place[];
-	filteredArrivals: Place[];
-	departure: string;
-	arrival: string;
-	places: Place[];
-	errorMessage: any;
-	isActiveRetour: boolean;
-
-	constructor(private _appService: AppService, private _router: Router ) { }
-
-	filterDepartures(term: string) {
-		this.filteredDepartures = this.searchPlaces(term);
-	}
-
-	filterArrivals(term: string) {
-		this.filteredArrivals = this.searchPlaces(term);
-	}
+export class SearchComponent {
+	private _departure: string;
+	private _arrival: string;
+	private _isReturn: boolean;
+	private _date: string;
+	private _dateReturn: string;
 
 	gotoOffers() {
-		if(this.departure && this.arrival) {
-			let link = ['Offers', { departure: this.departure, arrival: this.arrival }];
-			this._router.navigate(link);
-		}
-		
-	}
-	searchPlaces(query) {
-		//in a real application, make a request to a remote url with the query and return filtered results, for demo we filter at client side
-        let filtered: any[] = [];
-        if(query.length != 0) {
-			for (let i = 0; i < this.places.length; i++) {
-				let place = this.places[i];
-				if (place.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-					filtered.push(place);
-				}
+		let link = ['Offers', { departure: this._departure, arrival: this._arrival }];	
+		if (this._departure && this._arrival) {
+			if(this._isReturn && this._date && this._dateReturn) {
+				this._router.navigate(link);
 			}
-        }
-        return filtered;
+			else if(this._date){
+				this._router.navigate(link);
+			}
+		}
 	}
 
-	ngOnInit() {
-		this.getPlaces();
+	gotoMakeOffer() {
+		let link = ['OfferRide'];
+		this._router.navigate(link);
 	}
 
-	getPlaces() {
-		this._appService.getPlaces()
-			.subscribe(
-			places => this.places = places,
-			error => this.errorMessage = <any>error);
-	}
+	constructor(private _router: Router) {}
+
 }

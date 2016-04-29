@@ -1,0 +1,14 @@
+<div class="ui-grid">
+	<div class="ui-grid-row">
+		
+		<div class="ui-grid-col-6 container">
+		<i class="material-icons">home</i>
+			<p-autoComplete (keyup)="departureChange.emit(departure)" placeholder="Départ" [size]="25" [minLength]="1" [(ngModel)]="departure" field="name" [suggestions]="filteredDepartures" (completeMethod)="filterDepartures($event)"></p-autoComplete>
+		</div>
+		
+		<div class="ui-grid-col-6 container">
+		<i class="material-icons">place</i>
+			<p-autoComplete (keyup)="arrivalChange.emit(arrival)"  placeholder="Arrivée" [size]="25" [minLength]="1" [(ngModel)]="arrival" field="name" [suggestions]="filteredArrivals" (completeMethod)="filterArrivals($event)"></p-autoComplete>
+		</div>
+	</div>
+</div>

@@ -4,46 +4,38 @@
         	<div class="ui-grid-col-6">
 
         	<md-card>
-				<md-card-title>Coordonnées</md-card-title>
+				<md-card-title>Départ et arrivée</md-card-title>
 				
-   				<md-input (keyup)="filterDepartures(departure)" placeholder="Départ" class="full-width" [(ngModel)]="departure">
-        			<span md-prefix><i class="material-icons app-input-icon">home</i></span>
-				</md-input>
-			
-				<div class="autocomplete" *ngFor="#place of filteredDepartures">{{place.name}}</div>
-				    
-				<md-input (keyup)="filterArrivals(arrival)" placeholder="Arrivée" class="full-width" [(ngModel)]="arrival">
-	        		<span md-prefix><i class="material-icons app-input-icon">place</i></span>
-				</md-input>
-
-				<ul>
-					<li *ngFor="#place of filteredArrivals">{{place.name}}</li>
-				</ul>
+   				<from-to [(arrival)]="_arrival" [(departure)]="_departure"></from-to>
 	
 			</md-card>
 
 			<md-card>
 				<md-card-title>Fréquence</md-card-title >
-				<md-radio-group>
-	 				<md-radio-button value="option_1">Je fais ce trajet une fois(aller ou aller-retour)</md-radio-button>
-	  				<md-radio-button value="option_2">C'est un trajet régulier</md-radio-button>
+				<md-radio-group [(value)]="test">
+	 				<md-radio-button value="option_1">Une seule fois</md-radio-button>
+	  				<md-radio-button value="option_2">Trajet régulier</md-radio-button>
 				</md-radio-group>
 			</md-card>
 
 			<md-card>
-				<md-card-title>Date et horaire</md-card-title>
-					    <md-checkbox (change)="isActiveRetour=!isActiveRetour">
-      				Aller-Retour
-    					</md-checkbox>
+				<md-card-title>Date et heure</md-card-title>
+					<md-checkbox (change)="isReturn=!isReturn">Aller retour (facultatif)</md-checkbox>
 					<div class="ui-grid">
 						   <div class="ui-grid-row">
 						   		<div class="ui-grid-col-6">
 		           					<h3>Aller</h3>
-		            				<p-calendar [(ngModel)]="dateAller" dateFormat="mm/dd/yy" timeFormat="hh:mm tt z" timeControlType="select" [horizontalTimeControls]="true"></p-calendar>   
+		           					<div class="container">
+										<i class="material-icons">event</i>
+		            					<p-calendar placeholder="Date et heure" [(ngModel)]="_date" dateFormat="mm/dd/yy" timeFormat="hh:mm tt" timeControlType="slider" [horizontalTimeControls]="true"></p-calendar> 
+		            				</div>
 		            			</div>
-		           				<div class="ui-grid-col-6" *ngIf="isActiveRetour">
+		           				<div class="ui-grid-col-6" *ngIf="isReturn">
 		            				<h3>Retour</h3>
-		           					<p-calendar [(ngModel)]="dateRetour" dateFormat="mm/dd/yy" timeFormat="hh:mm tt z" timeControlType="select" [horizontalTimeControls]="true"></p-calendar>   
+		            				<div class="container">
+										<i class="material-icons">event</i>
+			           					<p-calendar placeholder="Date et heure de retour" [(ngModel)]="_dateReturn" dateFormat="mm/dd/yy" timeFormat="hh:mm tt" timeControlType="slider" [horizontalTimeControls]="true"></p-calendar>
+			           				</div>
 		            			</div>
   							</div>
 		        	</div>
@@ -53,21 +45,22 @@
 			<md-card>
 				<md-card-title>Détour</md-card-title>
 				
-				<md-input placeholder="distance additionelle" align="end" [(ngModel)]="detourMax">
-  					<span md-suffix> km</span>
+				<md-input placeholder="distance additionelle" [(ngModel)]="_detour">
+  					<span md-suffix>km</span>
 				</md-input>
 			</md-card>
 
 
 			<md-card>
-				<md-card-title>Nombre de places proposées :</md-card-title>
-					<md-input placeholder="" align="end" [(ngModel)]="numberFreePlaces">
+				<md-card-title>Places disponibles</md-card-title>
+					<md-input placeholder="nombre de places" [(ngModel)]="_seats">
 					</md-input>
+
 			</md-card>
 			<md-card>
 
 			<div class="flex-end"> 
-					<button  md-raised-button color="primary" (click)="sendData()">Publier</button>
+					<button  md-raised-button color="primary" (click)="sendRideOffer()">Publier</button>
 			</div>
 			</md-card>
 

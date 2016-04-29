@@ -1,8 +1,7 @@
-import {Component,OnInit} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {AppService} from '../services/app.service'
 import {Place} from '../models/place'
 import {Router } from 'angular2/router';
-import {AutoComplete} from 'primeng/primeng';
 import {MdButton} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
@@ -13,62 +12,37 @@ import {Calendar} from 'primeng/primeng';
 import {MdCheckbox} from '@angular2-material/checkbox';
 import {Ride} from '../models/ride'
 import {Passenger} from '../models/passenger'
+import {FromToComponent} from "./fromTo.component"
 @Component({
     selector: 'my- app1',
     templateUrl: `app/templates/offerRide.component.html`,
-	directives: [MdButton, MD_INPUT_DIRECTIVES, MD_CARD_DIRECTIVES, AutoComplete, MdRadioButton, Calendar,MdCheckbox],
+	directives: [FromToComponent, MdButton, MD_INPUT_DIRECTIVES, MD_CARD_DIRECTIVES, MdRadioButton, Calendar, MdCheckbox],
 	providers: [MdRadioDispatcher]
 })
 
 
-export class OfferRideComponent implements OnInit{
-  	es: any;
-    departure: Place;
-    arrival: Place;
-    dateAller: string;
-    dateRetour: string;
-    isActiveRetour: boolean;
-    frequency: string;
-    detourMax: number;
-    numberFreePlaces: number;
-    
+export class OfferRideComponent{
+    private _departure: string;
+    private _arrival: string;
+    private _date: string;
+    private _dateReturn: string;
+    private _isReturn: boolean;
+    private _frequency: string;
+    private _detour: number;
+    private _seats: number;
 
-    sendData(){
+    sendRideOffer(){
         let waypoints: Place[];
-        let pasengers: Passenger[];
-        let newRide = new Ride(this.departure, waypoints, this.arrival, this.frequency, this.dateAller, this.detourMax, this.numberFreePlaces, pasengers );
+        let passengers: Passenger[];
+      //  let newRide = new Ride(this.departure, waypoints, this.arrival, this.frequency, this.dateAller, this.detourMax, this.numberFreePlaces, passengers );
         // send
-        if (this.dateRetour)
+        if (this._dateReturn)
             {
-                let newRide1 = new Ride(this.arrival, waypoints, this.departure, this.frequency, this.dateRetour, this.detourMax, this.numberFreePlaces, pasengers );
+               // let newRide1 = new Ride(this.arrival, waypoints, this.departure, this.frequency, this.dateRetour, this.detourMax, this.numberFreePlaces, passengers );
                    // send
-
             }
 
             
     }
 
-    ngOnInit() {
-        this.es = {
-            closeText: "Cerrar",
-        	prevText: "<Ant",
-        	nextText: "Sig>",
-        	currentText: "Hoy",
-        	monthNames: [ "enero","febrero","marzo","abril","mayo","junio",
-        	"julio","agosto","septiembre","octubre","noviembre","diciembre" ],
-        	monthNamesShort: [ "ene","feb","mar","abr","may","jun",
-        	"jul","ago","sep","oct","nov","dic" ],
-        	dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
-        	dayNamesShort: [ "dom","lun","mar","mié","jue","vie","sáb" ],
-        	dayNamesMin: [ "D","L","M","X","J","V","S" ],
-        	weekHeader: "Sm",
-        	dateFormat: "dd/mm/yy",
-        	firstDay: 1,
-        	isRTL: false,
-        	showMonthAfterYear: false,
-        	yearSuffix: "" 
-        };
-
-
-    }
 }
