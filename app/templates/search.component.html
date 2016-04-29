@@ -25,7 +25,7 @@
 
 			<md-card>
 				<md-card-title>Date et horaire</md-card-title>
-					    <md-checkbox (change)="todo.completed = $event">
+					    <md-checkbox (change)="isActiveRetour=!isActiveRetour">
       				Aller-Retour
     					</md-checkbox>
 					<div class="ui-grid">
@@ -34,7 +34,7 @@
 		            <h3>Aller</h3>
 		            <p-calendar [(ngModel)]="date11" dateFormat="mm/dd/yy" timeFormat="hh:mm tt z" timeControlType="select" [horizontalTimeControls]="true"></p-calendar>   
 		            			</div>
-		           				 <div class="ui-grid-col-6">
+		           				 <div class="ui-grid-col-6" *ngIf="isActiveRetour">
 		            <h3>Retour</h3>
 		            <p-calendar [(ngModel)]="date11" dateFormat="mm/dd/yy" timeFormat="hh:mm tt z" timeControlType="select" [horizontalTimeControls]="true"></p-calendar>   
 		            			</div>

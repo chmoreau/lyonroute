@@ -1,7 +1,7 @@
 import {Component,OnInit} from 'angular2/core';
 import {AppService} from '../services/app.service'
 import {Place} from '../models/place'
-import { Router } from 'angular2/router';
+import {Router } from 'angular2/router';
 import {AutoComplete} from 'primeng/primeng';
 import {MdButton} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
@@ -11,7 +11,8 @@ import {MdRadioButton} from '@angular2-material/radio';
 import {MdRadioDispatcher} from '@angular2-material/radio/radio_dispatcher';
 import {Calendar} from 'primeng/primeng';
 import {MdCheckbox} from '@angular2-material/checkbox';
-
+import {Ride} from '../models/ride'
+import {Passenger} from '../models/passenger'
 @Component({
     selector: 'my- app1',
     templateUrl: `app/templates/offerRide.component.html`,
@@ -19,9 +20,33 @@ import {MdCheckbox} from '@angular2-material/checkbox';
 	providers: [MdRadioDispatcher]
 })
 
+
 export class OfferRideComponent implements OnInit{
   	es: any;
-	date11: string;
+    departure: Place;
+    arrival: Place;
+    dateAller: string;
+    dateRetour: string;
+    isActiveRetour: boolean;
+    frequency: string;
+    detourMax: number;
+    numberFreePlaces: number;
+    
+
+    sendData(){
+        let waypoints: Place[];
+        let pasengers: Passenger[];
+        let newRide = new Ride(this.departure, waypoints, this.arrival, this.frequency, this.dateAller, this.detourMax, this.numberFreePlaces, pasengers );
+        // send
+        if (this.dateRetour)
+            {
+                let newRide1 = new Ride(this.arrival, waypoints, this.departure, this.frequency, this.dateRetour, this.detourMax, this.numberFreePlaces, pasengers );
+                   // send
+
+            }
+
+            
+    }
 
     ngOnInit() {
         this.es = {
@@ -43,5 +68,7 @@ export class OfferRideComponent implements OnInit{
         	showMonthAfterYear: false,
         	yearSuffix: "" 
         };
+
+
     }
 }

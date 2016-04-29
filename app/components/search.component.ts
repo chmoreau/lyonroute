@@ -25,6 +25,7 @@ export class SearchComponent implements OnInit {
 	arrival: string;
 	places: Place[];
 	errorMessage: any;
+	isActiveRetour: boolean;
 
 	constructor(private _appService: AppService, private _router: Router ) { }
 

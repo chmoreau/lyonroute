@@ -23,27 +23,27 @@
 			</md-card>
 
 			<md-card>
-				<md-card-title>Fréquence</md-card-title>
+				<md-card-title>Fréquence</md-card-title >
 				<md-radio-group>
-	 				 <md-radio-button value="option_1">Je fais ce trajet une fois(aller ou aller-retour)</md-radio-button>
+	 				<md-radio-button value="option_1">Je fais ce trajet une fois(aller ou aller-retour)</md-radio-button>
 	  				<md-radio-button value="option_2">C'est un trajet régulier</md-radio-button>
 				</md-radio-group>
 			</md-card>
 
 			<md-card>
 				<md-card-title>Date et horaire</md-card-title>
-					    <md-checkbox (change)="todo.completed = $event">
+					    <md-checkbox (change)="isActiveRetour=!isActiveRetour">
       				Aller-Retour
     					</md-checkbox>
 					<div class="ui-grid">
 						   <div class="ui-grid-row">
 						   		<div class="ui-grid-col-6">
-		            <h3>Aller</h3>
-		            <p-calendar [(ngModel)]="date11" dateFormat="mm/dd/yy" timeFormat="hh:mm tt z" timeControlType="select" [horizontalTimeControls]="true"></p-calendar>   
+		           					<h3>Aller</h3>
+		            				<p-calendar [(ngModel)]="dateAller" dateFormat="mm/dd/yy" timeFormat="hh:mm tt z" timeControlType="select" [horizontalTimeControls]="true"></p-calendar>   
 		            			</div>
-		           				 <div class="ui-grid-col-6">
-		            <h3>Retour</h3>
-		            <p-calendar [(ngModel)]="date11" dateFormat="mm/dd/yy" timeFormat="hh:mm tt z" timeControlType="select" [horizontalTimeControls]="true"></p-calendar>   
+		           				<div class="ui-grid-col-6" *ngIf="isActiveRetour">
+		            				<h3>Retour</h3>
+		           					<p-calendar [(ngModel)]="dateRetour" dateFormat="mm/dd/yy" timeFormat="hh:mm tt z" timeControlType="select" [horizontalTimeControls]="true"></p-calendar>   
 		            			</div>
   							</div>
 		        	</div>
@@ -53,8 +53,7 @@
 			<md-card>
 				<md-card-title>Détour</md-card-title>
 				
-				<md-input placeholder="distance additionelle" align="end">
-
+				<md-input placeholder="distance additionelle" align="end" [(ngModel)]="detourMax">
   					<span md-suffix> km</span>
 				</md-input>
 			</md-card>
@@ -62,13 +61,13 @@
 
 			<md-card>
 				<md-card-title>Nombre de places proposées :</md-card-title>
-					<md-input placeholder="" align="end">
+					<md-input placeholder="" align="end" [(ngModel)]="numberFreePlaces">
 					</md-input>
 			</md-card>
 			<md-card>
 
 			<div class="flex-end"> 
-					<button  md-raised-button color="primary" (click)="gotoOffers()">Publier</button>
+					<button  md-raised-button color="primary" (click)="sendData()">Publier</button>
 			</div>
 			</md-card>
 
