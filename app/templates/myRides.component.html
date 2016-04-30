@@ -3,24 +3,28 @@
 		<div class="ui-grid-col-6">
 			<md-card style="padding: 0;margin:15px">
 				<md-nav-list>
-					<a md-list-item *ngFor="#offer of offers" (click)="showDetails()">
+					<a md-list-item *ngFor="#ride of rides, #i=index"  (click)="showDetails(i)">
 						<span md-line>
-							<span class="accent-bold">{{getDate(offer.fullDate) | date:"dd/MM hh:mm"}}</span>
-							<span>(durée : {{offer.fullDuration}} minutes)</span>
+							<span class="accent-bold">{{ride.departure.name}} - {{ride.arrival.name}}</span>
+							<span> • {{getDate(ride.date) | date:"dd/MM hh:mm"}}</span>
 						</span>
-						<span md-line>{{offer.driverName}} • {{offer.driverAge}} ans • {{offer.driverRating}}<i class="material-icons subtext">star</i></span>
-						<span md-line>véhicule : {{offer.car}}</span>
-						<span class="accent-bold">{{offer.seatsMax-offer.seatsAvailable}}/{{offer.seatsMax}}</span>
-						
-
-
+						<span md-line>
+							<span *ngFor="#passenger of ride.passengers, #j=index">
+								<span *ngIf="j!=0">• </span>
+								{{passenger.name}}
+							</span>
+							<span> ({{ride.seatsAvi}} places restantes)</span>
+						</span>
+						<span md-line>{{ride.frequency}} • détour autorisé : {{ride.detour}} km</span>
+						<span class="primary-bold">{{ride.seats-ride.seatsAvi}}/{{ride.seats}}</span>
 					</a>
 				</md-nav-list>
 			</md-card>
 		</div>
-		<div class="ui-grid-col-6" *ngIf="_showDetails">
-			hi:)
-			<map-directions [(arrival)]="_arrival" [(departure)]="_departure"></map-directions>
-		</div>
+		<md-card style="padding: 0;margin: 15;" *ngIf="_showDetails">
+			<div class="ui-grid-col-6" >
+				<map-directions width="550" height="550" [to]="_arrival" [from]="_departure" [waypoints]="_waypoints"></map-directions>
+			</div>
+		</md-card>
 	</div>
 </div>

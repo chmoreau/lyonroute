@@ -1,0 +1,37 @@
+{
+	"data" : [
+		{
+			"waypoints": [{"id": 1, "name": "INSA"}],
+			"arrival": {"id": 2, "name": "Villeurbanne"},
+			"departure": {"id": 2, "name": "Part-dieu"},
+			"frequency": "Aller simple",
+			"date": "2016-05-22T07:00:00Z",
+			"detour": 2,
+			"seatsAvi": 3,
+			"seats": 4,
+			"passengers": [{"name": "Bob"}, {"name": "Michel"}]
+		},
+		{
+			"arrival": {"id": 2, "name": "Villeurbanne"},
+			"departure": {"id": 2, "name": "Part-dieu"},
+			"frequency": "Aller simple",
+			"date": "2016-05-22T07:00:00Z",
+			"detour": 2,
+			"seatsAvi": 3,
+			"seats": 4,
+			"passengers": [{"name": "Bob"}, {"name": "Michel"}]
+		},
+		{
+			"waypoints": [{"id": 1, "name": "INSA"}],
+			"arrival": {"id": 2, "name": "Villeurbanne"},
+			"departure": {"id": 2, "name": "Part-dieu"},
+			"frequency": "Aller simple",
+			"date": "2016-05-22T07:00:00Z",
+			"detour": 2,
+			"seatsAvi": 3,
+			"seats": 4,
+			"passengers": [{"name": "Bob"}, {"name": "Michel"}]
+		}
+	]
+}
+

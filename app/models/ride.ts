@@ -5,19 +5,31 @@ export class Ride {
     waypoints: Place[];
     arrival: Place;
     frequency: string;
-    dateDeparture: string;
-    detourMax: number;
-    numberFreePlaces: number;
-    pasengers: Passenger[];
+    date: string;
+    detour: number;
+    seatsAvi: number;
+    seats: number;
+    passengers: Passenger[];
 
-    constructor(departure: Place, waypoints: Place[], arrival: Place, frequency: string, dateDeparture : string, detourMax : number, numberFreePlaces : number, passengers : Passenger[]){
-		this.departure = departure;
-		this.waypoints = waypoints;
-		this.arrival = arrival;
-		this.frequency = frequency;
-		this.dateDeparture = dateDeparture;
-		this.detourMax = detourMax;
-		this.numberFreePlaces = numberFreePlaces;
-		this.pasengers = passengers;
+    constructor(
+        departure: Place,
+        waypoints: Place[],
+        arrival: Place,
+        frequency: string,
+        dateDeparture: string,
+        detourMax: number,
+        numberFreePlaces: number,
+        seats: number,
+        passengers: Passenger[]) 
+    {
+        this.departure = departure;
+        this.waypoints = waypoints;
+        this.arrival = arrival;
+        this.frequency = frequency;
+        this.date = dateDeparture;
+        this.detour = detourMax;
+        this.seatsAvi = numberFreePlaces;
+        this.seats = seats;
+        this.passengers = passengers;
     }
 }

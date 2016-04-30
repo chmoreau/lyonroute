@@ -28,11 +28,11 @@ export class FromToComponent implements OnInit {
 	errorMessage: any;
 	constructor(private _appService: AppService) {
 		this._departureControl.valueChanges
-            .debounceTime(4000)
+            .debounceTime(2500)
             .distinctUntilChanged()
             .subscribe(_departureControl => this.asyncDeparture.emit(_departureControl));
         this._arrivalControl.valueChanges
-            .debounceTime(1000)
+            .debounceTime(2500)
             .distinctUntilChanged()
             .subscribe(_arrivalControl => this.asyncArrival.emit(_arrivalControl));
 	}
