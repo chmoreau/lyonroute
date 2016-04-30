@@ -5,7 +5,6 @@ import {Router } from 'angular2/router';
 import {MdButton} from '@angular2-material/button';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
-import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {MdRadioButton} from '@angular2-material/radio';
 import {MdRadioDispatcher} from '@angular2-material/radio/radio_dispatcher';
 import {Calendar} from 'primeng/primeng';
@@ -13,10 +12,12 @@ import {MdCheckbox} from '@angular2-material/checkbox';
 import {Ride} from '../models/ride'
 import {Passenger} from '../models/passenger'
 import {FromToComponent} from "./fromTo.component"
+import {MapComponent} from "./map.component"
+
 @Component({
-    selector: 'my- app1',
+    selector: 'offer-ride',
     templateUrl: `app/templates/offerRide.component.html`,
-	directives: [FromToComponent, MdButton, MD_INPUT_DIRECTIVES, MD_CARD_DIRECTIVES, MdRadioButton, Calendar, MdCheckbox],
+    directives: [MapComponent, FromToComponent, MdButton, MD_INPUT_DIRECTIVES, MD_CARD_DIRECTIVES, MdRadioButton, Calendar, MdCheckbox],
 	providers: [MdRadioDispatcher]
 })
 
@@ -30,6 +31,8 @@ export class OfferRideComponent{
     private _frequency: string;
     private _detour: number;
     private _seats: number;
+    private _mapDeparture: any;
+    private _mapArrival: any;
 
     sendRideOffer(){
         let waypoints: Place[];

@@ -3,12 +3,12 @@
 		
 		<div class="ui-grid-col-6 container">
 		<i class="material-icons">home</i>
-			<p-autoComplete (onSelect)="departureChange.emit(departure)" (keyup)="departureChange.emit(departure)" placeholder="Départ" [size]="25" [minLength]="1" [(ngModel)]="departure" [suggestions]="filteredDepartures" (completeMethod)="filterDepartures($event)"></p-autoComplete>
+			<p-autoComplete (onSelect)="departureChange.emit(departure)" (keyup)="departureChange.emit(departure)" placeholder="Départ" [size]="25" [minLength]="1" [ngFormControl]="_departureControl" [(ngModel)]="departure" [suggestions]="filteredDepartures" (completeMethod)="filterDepartures($event)"></p-autoComplete>
 		</div>
 		
 		<div class="ui-grid-col-6 container">
 		<i class="material-icons">place</i>
-			<p-autoComplete (onSelect)="arrivalChange.emit(arrival)" (keyup)="arrivalChange.emit(arrival)"  placeholder="Arrivée" [size]="25" [minLength]="1" [(ngModel)]="arrival" [suggestions]="filteredArrivals" (completeMethod)="filterArrivals($event)"></p-autoComplete>
+			<p-autoComplete (onSelect)="arrivalChange.emit(arrival)" (keyup)="arrivalChange.emit(arrival)"  placeholder="Arrivée" [size]="25" [minLength]="1" [ngFormControl]="_arrivalControl" [(ngModel)]="arrival" [suggestions]="filteredArrivals" (completeMethod)="filterArrivals($event)"></p-autoComplete>
 		</div>
 	</div>
 </div>
