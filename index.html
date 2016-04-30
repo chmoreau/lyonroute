@@ -25,7 +25,7 @@
       System.config({
         defaultJSExtensions: true,
             packages: {
-                'app': {"defaultExtension": 'js'},
+                'js': {"defaultExtension": 'js'},
                  '@angular2-material/core': {
                     format: 'cjs',
                     defaultExtension: 'js',
@@ -73,7 +73,7 @@
                 '@angular2-material' : 'node_modules/@angular2-material'
             }
       });
-      System.import('app/main')
+      System.import('dist/js/main')
             .then(null, console.error.bind(console));
     </script>
 
