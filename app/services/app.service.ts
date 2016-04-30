@@ -7,12 +7,12 @@ import {Observable}     from 'rxjs/Observable';
 @Injectable()
 export class AppService {
 	constructor(private http: Http) { }
-	private _apiUrl = 'app/dummy.json';  // URL to web api
 
+	private _placesApi = 'app/places.json';
 	private _offersApi = 'app/offers.json';
 
 	getPlaces(): Observable<Place[]> {
-		return this.http.get(this._apiUrl)
+		return this.http.get(this._placesApi)
 			.map(this.extractData)
 			.catch(this.handleError);
 	}

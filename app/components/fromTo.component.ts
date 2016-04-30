@@ -16,8 +16,8 @@ export class FromToComponent implements OnInit {
 	@Output() arrivalChange = new EventEmitter();
 	@Output() suggestionsChange = new EventEmitter();
 	
-	filteredDepartures: Place[];
-	filteredArrivals: Place[];
+	filteredDepartures: string[];
+	filteredArrivals: string[];
 	places: Place[];
 	errorMessage: any;
 	constructor(private _appService: AppService) {}
@@ -47,7 +47,7 @@ export class FromToComponent implements OnInit {
 			for (let i = 0; i < this.places.length; i++) {
 				let place = this.places[i];
 				if (place.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-					filtered.push(place);
+					filtered.push(place.name);
 				}
 			}
         }
