@@ -1,0 +1,26 @@
+<div class="ui-grid">
+	<div class="ui-grid-row">
+		<div class="ui-grid-col-6">
+			<md-card style="padding: 0;margin:15px">
+				<md-nav-list>
+					<a md-list-item *ngFor="#offer of offers" (click)="showDetails()">
+						<span md-line>
+							<span class="accent-bold">{{getDate(offer.fullDate) | date:"dd/MM hh:mm"}}</span>
+							<span>(durée : {{offer.fullDuration}} minutes)</span>
+						</span>
+						<span md-line>{{offer.driverName}} • {{offer.driverAge}} ans • {{offer.driverRating}}<i class="material-icons subtext">star</i></span>
+						<span md-line>véhicule : {{offer.car}}</span>
+						<span class="accent-bold">{{offer.seatsMax-offer.seatsAvailable}}/{{offer.seatsMax}}</span>
+						
+
+
+					</a>
+				</md-nav-list>
+			</md-card>
+		</div>
+		<div class="ui-grid-col-6" *ngIf="_showDetails">
+			hi:)
+			<map-directions [(arrival)]="_arrival" [(departure)]="_departure"></map-directions>
+		</div>
+	</div>
+</div>

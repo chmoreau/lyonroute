@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {SearchComponent} from './components/search.component';
 import {OffersComponent} from './components/offers.component';
 import {OfferRideComponent} from './components/offerRide.component';
+import {MyRidesComponent} from './components/myRides.component';
 import {MdToolbar} from '@angular2-material/toolbar';
 import {MdButton} from '@angular2-material/button';
 import {AppService} from './services/app.service'
@@ -15,7 +16,7 @@ import {Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular
 				  <strong>LyonRoute&nbsp;&nbsp;</strong> <span class="subtext">Un service de covoiturage différent des autres (si, si).</span>
 				  <span class="fill-space"></span>
 				  <button  style="color:white" md-button  (click)="_router.navigate(['Search'])">Rechercher</button>
-				  <button  style="color:white" md-button  (click)="_router.navigate(['OfferRide'])">Mes Trajets</button>
+				  <button  style="color:white" md-button  (click)="_router.navigate(['MyRides'])">Mes Trajets</button>
 				</md-toolbar>
   				<router-outlet></router-outlet>`,
     directives: [ROUTER_DIRECTIVES, MdToolbar, MdButton],
@@ -37,11 +38,17 @@ import {Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular
 		path: '/offerRide',
 		name: 'OfferRide',
 		component: OfferRideComponent
+	},
+	{
+		path: '/myRides',
+		name: 'MyRides',
+		component: MyRidesComponent
 	}
 ])
 
 export class AppComponent {
 	constructor(private _router: Router) {}	
 	goHome() {
-		this._router.navigate(['Search'])
+		this._router.navigate(['Search']);
 	}
+}

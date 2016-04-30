@@ -21,7 +21,7 @@ export class MapComponent implements OnInit {
 
 
 	ngOnInit(){
-		//this.departure && this.arrival ? this._src=this._directionsUrl : this._src=this._defaultUrl;
+		this.departure && this.arrival ? this._src=this._directionsUrl : this._src=this._defaultUrl;
 	}
 	ngOnChanges() {
 		if (this.waypoints.length) {

@@ -9,6 +9,7 @@
 			"to": "Part-Dieu",
 			"fullDuration" : 10,
 			"seatsAvailable" : 4,
+			"seatsMax" : 5,
 			"car" : "Renault r5"
 		},
 		{
@@ -19,7 +20,8 @@
 			"from": "Villeurbanne",
 			"to": "Part-Dieu",
 			"fullDuration" : 70,
-			"seatsAvailable" : 5,
+			"seatsAvailable" : 3,
+			"seatsMax" : 5,
 			"car" : "Renault r5"
 		},
 		{
@@ -31,6 +33,7 @@
 			"to": "Part-Dieu",
 			"fullDuration" : 20,
 			"seatsAvailable" : 1,
+			"seatsMax" : 5,
 			"car" : "Renault r5"
 		},
 		{
@@ -41,7 +44,8 @@
 			"from": "Villeurbanne",
 			"to": "Part-Dieu",
 			"fullDuration" : 4,
-			"seatsAvailable" : 78,
+			"seatsAvailable" : 1,
+			"seatsMax" : 5,
 			"car" : "Renault r5"
 		}
 	]

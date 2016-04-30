@@ -7,5 +7,6 @@ export class Offer {
 	to: string;
 	fullDuration: number;
 	seatsAvailable: number;
+	seatsMax: number = 5;
 	car: string;
 }
