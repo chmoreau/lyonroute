@@ -8,11 +8,12 @@
 	</md-radio-group>
 	<md-nav-list>
 		<h3 md-subheader>{{offers?.length}} offres de covoiturage</h3>
-	   <a md-list-item *ngFor="#offer of offers">  
+	   	<a (click)="showDialog(i)" md-list-item *ngFor="#offer of offers, #i=index">  
 	   	<img md-list-avatar src="img/pp.png" alt="...">
 
 	   	<div class="container" style="width: 100%;">
 	   		<div class="header item">
+	   		
 	   			<span>{{offer.driverName}}</span>
 	   			<br/>
 	   			<div>
@@ -33,5 +34,17 @@
 	   		</div>
 	   	</div>		
 	   </a>
+
 	</md-nav-list>
 </md-card>
+
+<p-dialog style="border: 0" *ngIf="_selectedOffer" header="Confirmer le trajet" [(visible)]="_dialog" class="container">
+  <span class="accent-bold">{{_selectedOffer.ride.departure.name}} - {{_selectedOffer.ride.arrival.name}}</span>
+  <br>
+  <span>{{getDate(_selectedOffer.ride.date) | date:"dd/MM hh:mm"}} ({{_selectedOffer.ride.duration}} min)</span>
+  	<div class="flex-end" style="margin-top: 25px">
+  		<button (click)="_dialog=false" style="font-weight: bold" md-button>Annuler</button>
+    	<button (click)="_dialog=false" style="font-weight: bold" md-button>Confirmer</button>
+    </div>
+      
+</p-dialog>

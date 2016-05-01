@@ -18,15 +18,14 @@
 			}
 		},
 		{
-			"driverName":"Afanasie",
+			"driverName":"Charles",
 			"driverAge": 22,
-			"driverRating" : 3.4,
+			"driverRating" : 1.6,
 			"driverCar" : "Renault Clio",
 			"frequency" : ["lun.","mar.","ven."],
 			"ride" : {
-				"waypoints": [{"id": 1, "name": "INSA"}, {"id": 2, "name": "tete d'or"}],
-				"arrival": {"id": 2, "name": "Villeurbanne"},
-				"departure": {"id": 2, "name": "Part-dieu"},
+				"arrival": {"id": 2, "name": "Place Bellecour"},
+				"departure": {"id": 2, "name": "INSA"},
 				"date": "2016-05-22T07:00:00Z",
 				"detour": 2,
 				"duration" : 20,
@@ -36,14 +35,14 @@
 			}
 		},
 		{
-			"driverName":"Afanasie",
+			"driverName":"Razvan",
 			"driverAge": 22,
-			"driverRating" : 3.4,
-			"driverCar" : "Renault Clio",
+			"driverRating" : 2.8,
+			"driverCar" : "Dacia",
 			"ride" : {
-				"waypoints": [{"id": 1, "name": "INSA"}, {"id": 2, "name": "tete d'or"}],
-				"arrival": {"id": 2, "name": "Villeurbanne"},
-				"departure": {"id": 2, "name": "Part-dieu"},
+				"waypoints": [{"id": 1, "name": "INSA"}, {"id": 2, "name": "Lyon 6"}],
+				"arrival": {"id": 2, "name": "Ecully"},
+				"departure": {"id": 2, "name": "Vaulx-en-Velin"},
 				"date": "2016-05-22T07:00:00Z",
 				"detour": 2,
 				"duration" : 20,
