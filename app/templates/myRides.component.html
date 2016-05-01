@@ -2,29 +2,62 @@
 	<div class="ui-grid-row">
 		<div class="ui-grid-col-6">
 			<md-card style="padding: 0;margin:15px">
+				<md-card-title style="padding:24 24 0 24;">Vos annonces publiées</md-card-title>
 				<md-nav-list>
-					<a md-list-item *ngFor="#ride of rides, #i=index"  (click)="showDetails(i)">
+					<a md-list-item *ngFor="#offer of offers"  (click)="showDetails(offer)">
 						<span md-line>
-							<span class="accent-bold">{{ride.departure.name}} - {{ride.arrival.name}}</span>
-							<span> • {{getDate(ride.date) | date:"dd/MM hh:mm"}}</span>
+							<span class="accent-bold">{{offer.ride.departure.name}}</span>
+							<span style="color:var(--accent)" *ngFor="#waypoint of offer.ride.waypoints"> - {{waypoint.name}}</span><span> - </span>
+							<span class="accent-bold">{{offer.ride.arrival.name}}</span>
+							<span> • {{getDate(offer.ride.date) | date:"dd/MM hh:mm"}}</span>
 						</span>
 						<span md-line>
-							<span *ngFor="#passenger of ride.passengers, #j=index">
+							<span *ngFor="#passenger of offer.ride.passengers, #j=index">
 								<span *ngIf="j!=0">• </span>
 								{{passenger.name}}
 							</span>
-							<span> ({{ride.seatsAvi}} places restantes)</span>
+							<span> ({{offer.ride.seatsAvi}} places restantes)</span>
 						</span>
-						<span md-line>{{ride.frequency}} • détour autorisé : {{ride.detour}} km</span>
-						<span class="primary-bold">{{ride.seats-ride.seatsAvi}}/{{ride.seats}}</span>
+						<span md-line *ngIf="!offer.frequency">Trajet unique</span>
+						<span md-line *ngIf="offer.frequency">
+							<span>Tous les </span>
+							<span *ngFor="#day of offer.frequency">{{day}} </span>
+						</span>
+						<span class="primary-bold">{{offer.ride.seats-offer.ride.seatsAvi}}/{{offer.ride.seats}}</span>
+					</a>
+				</md-nav-list>
+			</md-card>
+
+			<md-card style="padding: 0;margin:15px">
+				<md-card-title style="padding:24 24 0 24;">Vos inscriptions à des trajets</md-card-title>
+				<md-nav-list>
+					<a md-list-item *ngFor="#offer of subscriptions" (click)="showDetails(offer)">
+						<span md-line>
+							<span class="primary-bold">{{offer.ride.departure.name}}</span>
+							<span class="primary-bold"> - </span>
+							<span class="primary-bold">{{offer.ride.arrival.name}}</span>
+							<span> • {{getDate(offer.ride.date) | date:"dd/MM hh:mm"}} (durée : {{offer.ride.duration}} min)</span>
+						</span>
+						<span md-line>
+							{{offer.driverName}} • {{offer.driverAge}} ans • {{offer.driverRating}}
+							<i class="material-icons subtext">star</i> • {{offer.driverCar}}
+						</span>
+						<span md-line *ngIf="!offer.frequency">Trajet unique</span>
+						<span md-line *ngIf="offer.frequency">
+							<span>Tous les </span>
+							<span *ngFor="#day of offer.frequency">{{day}} </span>
+						</span>
+						<span class="primary-bold">{{offer.ride.seats-offer.ride.seatsAvi}}/{{offer.ride.seats}}</span>
 					</a>
 				</md-nav-list>
 			</md-card>
 		</div>
-		<md-card style="padding: 0;margin: 15;" *ngIf="_showDetails">
-			<div class="ui-grid-col-6" >
-				<map-directions width="550" height="550" [to]="_arrival" [from]="_departure" [waypoints]="_waypoints"></map-directions>
-			</div>
-		</md-card>
+		<div class="ui-grid-col-6" >
+			<md-card style="padding: 0;margin: 15; width: 550" *ngIf="_showDetails">
+				
+					<map-directions width="550" height="550" [to]="_arrival" [from]="_departure" [waypoints]="_waypoints"></map-directions>
+				
+			</md-card>
+		</div>
 	</div>
 </div>

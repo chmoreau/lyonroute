@@ -1,7 +1,7 @@
 import {Component, OnInit} from 'angular2/core';
 import {MapComponent} from './map.component'
 import {AppService} from '../services/app.service'
-import {Ride} from '../models/ride'
+import {Offer} from '../models/offer'
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list'
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card'
 
@@ -13,35 +13,43 @@ import {MD_CARD_DIRECTIVES} from '@angular2-material/card'
 })
 export class MyRidesComponent implements OnInit {
 	constructor(private _appService: AppService) {}
-	rides: Ride[];
+	offers: Offer[];
+	subscriptions: Offer[];
 	errorMessage: any;
 	private _departure: string;
 	private _arrival: string;
 	private _waypoints: string[];
 	private _showDetails: boolean = false;
 	ngOnInit(){
-		this.getRides();
+		this.getMyOffers();
+		this.getSubscriptions();
 	}
-	getRides() {
-		this._appService.getRides()
+	getMyOffers() {
+		this._appService.getOffers()
 			.subscribe(
-			rides => this.rides = rides,
+			offers => this.offers = offers,
 			error => this.errorMessage = <any>error);
 	}
-	showDetails(index: number) {
+	getSubscriptions() {
+		this._appService.getOffers()
+			.subscribe(
+			offers => this.subscriptions = offers,
+			error => this.errorMessage = <any>error);
+	}
+	private showDetails(offer: Offer) {
 		this._showDetails=true;
-		this._departure = this.rides[index].departure.name;
-		this._arrival = this.rides[index].arrival.name;
-		if (this.rides[index].waypoints) {
-			//transform Place[] to string[]
-			this._waypoints = this.rides[index].waypoints.map(place => place.name);
+		this._departure = offer.ride.departure.name;
+		this._arrival = offer.ride.arrival.name;
+		if (offer.ride.waypoints) {
+			//transform Place[] into string[]
+			this._waypoints = offer.ride.waypoints.map(place => place.name);
 		}
 		else {
 			this._waypoints = [];
 		}
 		
 	}
-	getDate(date:string) {
+	private getDate(date:string) {
 		return new Date(date);
 	}
 }

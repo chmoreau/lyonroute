@@ -48,7 +48,7 @@ import {Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular
 
 export class AppComponent {
 	constructor(private _router: Router) {}	
-	goHome() {
+	private goHome() {
 		this._router.navigate(['Search']);
 	}
 }

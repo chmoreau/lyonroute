@@ -22,14 +22,14 @@
 	   			</div>
 	   		</div>
 	   		<div class="middle item">
-	   			<strong>{{getDate(offer.fullDate) | date:"dd/MM hh:mm"}}</strong>
+	   			<strong>{{getDate(offer.ride.date) | date:"dd/MM hh:mm"}}</strong>
 	   			<br/>
-	   			<span class="primary-bold">{{offer.fullDuration}} min</span>
+	   			<span class="primary-bold">{{offer.ride.duration}} min</span>
 	   			<br/>
-	   			<span class="subtext">Véhicule : <span class="primary-bold">{{offer.car}}</span></span>
+	   			<span class="subtext">Véhicule : <span class="primary-bold">{{offer.driverCar}}</span></span>
 	   		</div>
 	   		<div class="right item">
-	   			<span class="accent-bold">{{offer.seatsAvailable}} places</span>
+	   			<span class="accent-bold">{{offer.ride.seatsAvi}} places</span>
 	   		</div>
 	   	</div>		
 	   </a>

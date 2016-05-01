@@ -4,7 +4,7 @@ export class Ride {
     departure: Place;
     waypoints: Place[];
     arrival: Place;
-    frequency: string;
+    duration: number;
     date: string;
     detour: number;
     seatsAvi: number;
@@ -15,7 +15,7 @@ export class Ride {
         departure: Place,
         waypoints: Place[],
         arrival: Place,
-        frequency: string,
+        duration: number,
         dateDeparture: string,
         detourMax: number,
         numberFreePlaces: number,
@@ -25,7 +25,7 @@ export class Ride {
         this.departure = departure;
         this.waypoints = waypoints;
         this.arrival = arrival;
-        this.frequency = frequency;
+        this.duration = duration;
         this.date = dateDeparture;
         this.detour = detourMax;
         this.seatsAvi = numberFreePlaces;

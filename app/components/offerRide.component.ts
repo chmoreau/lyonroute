@@ -34,6 +34,7 @@ export class OfferRideComponent{
     private _mapDeparture: any;
     private _mapArrival: any;
 
+
     sendRideOffer(){
         let waypoints: Place[];
         let passengers: Passenger[];
@@ -43,9 +44,7 @@ export class OfferRideComponent{
             {
                // let newRide1 = new Ride(this.arrival, waypoints, this.departure, this.frequency, this.dateRetour, this.detourMax, this.numberFreePlaces, passengers );
                    // send
-            }
-
-            
+            }     
     }
 
 }
