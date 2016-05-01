@@ -1,6 +1,66 @@
 <div class="ui-grid">
 	<div class="ui-grid-row">
+		
+
+    <div class="ui-grid-col-3">
+		<md-card>
+
+		<md-card>
+
+			<md-card-title>Nom Prenom</md-card-title>
+
+				<img src="img/putin.png" height="100" width="100">
+
+  		 <md-card-content>
+  		        <p>Age:</p>
+  		        <p>Évaluation moyenne :</p>
+  		   		<h3>Sur moi:</h3>
+  		    	<p> fasfasfasfas </p>
+  		 </md-card-content>
+  		 </md-card>
+
+			<md-card>
+						<md-card-title>Voiture</md-card-title>
+						  		<md-card-content>
+					  		   		<h3>ZiL Presidential Limo 
+					  		   			<i class="material-icons subtext">star</i>
+					  		   			<i class="material-icons subtext">star</i>
+					  		   			<i class="material-icons subtext">star</i>
+					  		   			<i class="material-icons subtext">star</i>
+					  		   			<i class="material-icons subtext">star</i>
+					  		   		</h3>
+					  		   		<img src="img/zil.png" height="100" width="100">
+
+					  		    	
+  		 						</md-card-content>
+
+			</md-card>
 
 
+		</md-card>
+	</div>
+
+        	<div class="ui-grid-col-9">
+				<md-card>
+				<md-card-title>List Avis</md-card-title>
+					<md-list>
+						<md-list-item *ngFor="#avis of listAvis">  
+						<div class="container" style="width: 100%;">
+							<img md-list-avatar src="img/pp.png" alt="...">
+	   					
+							<div class="header item">
+								<span style="font-weight: bold;" md-line> {{avis.author.name}} </span>
+							</div>
+							<div class="middle item">
+								<span>Note: {{avis.note}}<i class="material-icons subtext">star</i></span>
+							    <p md-line>
+							      <span style = "font-style: italic;"> {{avis.text}} </span>
+							    </p>		
+							</div>
+						</div>
+					    </md-list-item>
+					</md-list>
+				</md-card>	   
+   			</div>
 	</div>
 </div>

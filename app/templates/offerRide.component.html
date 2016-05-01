@@ -10,11 +10,11 @@
 			<md-card>
 				<md-card-title>Fréquence</md-card-title >
 				<md-radio-group [(value)]="_isFrequency">
-	 				<md-radio-button value="option_1">Une seule fois</md-radio-button>
+	 				<md-radio-button value="">Une seule fois</md-radio-button>
 	  				<md-radio-button value="option_2">Trajet régulier</md-radio-button>
 				</md-radio-group>
 
-				<md-card>	
+				<md-card *ngIf="(_isFrequency)">	
 					<md-checkbox align="end"
 	            		(change)="modifyFrequency(1)">
 			 			Lundi

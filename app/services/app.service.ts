@@ -2,6 +2,7 @@ import {Injectable} from 'angular2/core';
 import {Place} from '../models/place';
 import {Offer} from '../models/offer';
 import {Ride} from '../models/ride';
+import {Avis} from '../models/avis';
 import {Http, Response} from 'angular2/http';
 import {Observable}     from 'rxjs/Observable';
 
@@ -12,6 +13,7 @@ export class AppService {
 	private _placesApi = 'app/places.json';
 	private _offersApi = 'app/offers.json';
 	private _ridesApi = 'app/rides.json';
+	private _listAvisApi = 'app/listAvis.json';
 
 	getPlaces(): Observable<Place[]> {
 		return this.http.get(this._placesApi)
@@ -25,6 +27,12 @@ export class AppService {
 	}
 	getRides(): Observable<Ride[]> {
 		return this.http.get(this._ridesApi)
+			.map(this.extractData)
+			.catch(this.handleError);
+	}
+
+	getListAvis(): Observable<Avis[]> {
+		return this.http.get(this._listAvisApi)
 			.map(this.extractData)
 			.catch(this.handleError);
 	}
