@@ -28,11 +28,20 @@ export class OfferRideComponent{
     private _date: string;
     private _dateReturn: string;
     private _isReturn: boolean;
-    private _frequency: string;
+    private _isFrequency: string;
+    private _frequency: boolean[];
     private _detour: number;
     private _seats: number;
     private _mapDeparture: any;
     private _mapArrival: any;
+
+
+    modifyFrequency(day : number){
+
+     
+
+        console.log("fsfs");
+    }
 
     sendRideOffer(){
         let waypoints: Place[];

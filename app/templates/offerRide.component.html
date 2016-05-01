@@ -9,10 +9,42 @@
 			</md-card>
 			<md-card>
 				<md-card-title>Fréquence</md-card-title >
-				<md-radio-group [(value)]="test">
+				<md-radio-group [(value)]="_isFrequency">
 	 				<md-radio-button value="option_1">Une seule fois</md-radio-button>
 	  				<md-radio-button value="option_2">Trajet régulier</md-radio-button>
 				</md-radio-group>
+
+				<md-card>	
+					<md-checkbox align="end"
+	            		(change)="modifyFrequency(1)">
+			 			Lundi
+			    	</md-checkbox>
+					<md-checkbox align="end"
+	            		(change)="modifyFrequency(2)">
+			 			Mardi
+			    	</md-checkbox>
+			    	<md-checkbox align="end"
+	            		(change)="modifyFrequency(3)">
+			 			Mercredi
+			    	</md-checkbox>
+			    	<md-checkbox align="end"
+	            		(change)="modifyFrequency(4)">
+			 			Jeudi
+			    	</md-checkbox>
+			    	<md-checkbox align="end"
+	            		(change)="modifyFrequency(5)">
+			 			Vendredi
+			    	</md-checkbox>
+			    	<md-checkbox align="end"
+	            		(change)="modifyFrequency(6)">
+			 			Samedi
+			    	</md-checkbox>
+			    	<md-checkbox align="end"
+	            		(change)="modifyFrequency(7)">
+			 			Dimanche
+			    	</md-checkbox>
+ 			
+		   		</md-card>
 			</md-card>
 			<md-card>
 				<md-card-title>Date et heure</md-card-title>

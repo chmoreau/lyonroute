@@ -3,6 +3,9 @@ import {SearchComponent} from './components/search.component';
 import {OffersComponent} from './components/offers.component';
 import {OfferRideComponent} from './components/offerRide.component';
 import {MyRidesComponent} from './components/myRides.component';
+
+import {MonProfilComponent} from './components/monProfil.component';
+
 import {MdToolbar} from '@angular2-material/toolbar';
 import {MdButton} from '@angular2-material/button';
 import {AppService} from './services/app.service'
@@ -17,6 +20,7 @@ import {Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular
 				  <span class="fill-space"></span>
 				  <button  style="color:white" md-button  (click)="_router.navigate(['Search'])">Rechercher</button>
 				  <button  style="color:white" md-button  (click)="_router.navigate(['MyRides'])">Mes Trajets</button>
+				  <button  style="color:white" md-button  (click)="_router.navigate(['MonProfil'])">MonProfil</button>
 				</md-toolbar>
   				<router-outlet></router-outlet>`,
     directives: [ROUTER_DIRECTIVES, MdToolbar, MdButton],
@@ -43,6 +47,11 @@ import {Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular
 		path: '/myRides',
 		name: 'MyRides',
 		component: MyRidesComponent
+	},
+	{
+		path:'/monProfil',
+		name: 'MonProfil',
+		component: MonProfilComponent
 	}
 ])
 
