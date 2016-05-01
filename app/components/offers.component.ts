@@ -32,7 +32,7 @@ export class OffersComponent implements OnInit {
 			switch (event.value) {
 				case "duration":
 					this.sortingOption = event.value;
-					this.offers.sort((a:Offer, b:Offer) => a.fullDuration-b.fullDuration);
+					this.offers.sort((a:Offer, b:Offer) => a.ride.duration-b.ride.duration);
 					break;
 				case "rating":
 					this.sortingOption = event.value;
@@ -40,13 +40,12 @@ export class OffersComponent implements OnInit {
 					break;
 				case "seats":
 					this.sortingOption = event.value;
-					this.offers.sort((a: Offer, b: Offer) => a.seatsAvailable - b.seatsAvailable);
+					this.offers.sort((a: Offer, b: Offer) => a.ride.seatsAvi - b.ride.seatsAvi);
 					break;
 				default:
 					break;
 			}
 		}
-		
 	}
 
 	ngOnInit() {

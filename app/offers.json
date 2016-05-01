@@ -4,49 +4,53 @@
 			"driverName":"Afanasie",
 			"driverAge": 22,
 			"driverRating" : 3.4,
-			"fullDate": "1977-04-22T06:00:00Z",
-			"from": "Villeurbanne",
-			"to": "Part-Dieu",
-			"fullDuration" : 10,
-			"seatsAvailable" : 4,
-			"seatsMax" : 5,
-			"car" : "Renault r5"
+			"driverCar" : "Renault Clio",
+			"ride" : {
+				"waypoints": [{"id": 1, "name": "INSA"}, {"id": 2, "name": "tete d'or"}],
+				"arrival": {"id": 2, "name": "Villeurbanne"},
+				"departure": {"id": 2, "name": "Part-dieu"},
+				"date": "2016-05-22T07:00:00Z",
+				"duration" : 20,
+				"detour": 2,
+				"seatsAvi": 3,
+				"seats": 4,
+				"passengers": [{"name": "Bob"}, {"name": "Michel"}]
+			}
 		},
 		{
-			"driverName":"Razvan",
+			"driverName":"Afanasie",
 			"driverAge": 22,
-			"driverRating": 2.1,
-			"fullDate": "1977-04-22T06:00:00Z",
-			"from": "Villeurbanne",
-			"to": "Part-Dieu",
-			"fullDuration" : 70,
-			"seatsAvailable" : 3,
-			"seatsMax" : 5,
-			"car" : "Renault r5"
+			"driverRating" : 3.4,
+			"driverCar" : "Renault Clio",
+			"frequency" : ["lun.","mar.","ven."],
+			"ride" : {
+				"waypoints": [{"id": 1, "name": "INSA"}, {"id": 2, "name": "tete d'or"}],
+				"arrival": {"id": 2, "name": "Villeurbanne"},
+				"departure": {"id": 2, "name": "Part-dieu"},
+				"date": "2016-05-22T07:00:00Z",
+				"detour": 2,
+				"duration" : 20,
+				"seatsAvi": 3,
+				"seats": 4,
+				"passengers": [{"name": "Bob"}, {"name": "Michel"}]
+			}
 		},
 		{
-			"driverName":"Orlando",
+			"driverName":"Afanasie",
 			"driverAge": 22,
-			"driverRating": 0.2,
-			"fullDate": "1977-04-22T06:00:00Z",
-			"from": "Villeurbanne",
-			"to": "Part-Dieu",
-			"fullDuration" : 20,
-			"seatsAvailable" : 1,
-			"seatsMax" : 5,
-			"car" : "Renault r5"
-		},
-		{
-			"driverName":"Charles",
-			"driverAge": 22,
-			"driverRating": 0,
-			"fullDate": "1977-04-22T06:00:00Z",
-			"from": "Villeurbanne",
-			"to": "Part-Dieu",
-			"fullDuration" : 4,
-			"seatsAvailable" : 1,
-			"seatsMax" : 5,
-			"car" : "Renault r5"
+			"driverRating" : 3.4,
+			"driverCar" : "Renault Clio",
+			"ride" : {
+				"waypoints": [{"id": 1, "name": "INSA"}, {"id": 2, "name": "tete d'or"}],
+				"arrival": {"id": 2, "name": "Villeurbanne"},
+				"departure": {"id": 2, "name": "Part-dieu"},
+				"date": "2016-05-22T07:00:00Z",
+				"detour": 2,
+				"duration" : 20,
+				"seatsAvi": 3,
+				"seats": 4,
+				"passengers": [{"name": "Bob"}, {"name": "Michel"}]
+			}
 		}
 	]
 }

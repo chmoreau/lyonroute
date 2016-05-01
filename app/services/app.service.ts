@@ -18,13 +18,11 @@ export class AppService {
 			.map(this.extractData)
 			.catch(this.handleError);
 	}
-
 	getOffers(): Observable<Offer[]> {
 		return this.http.get(this._offersApi)
 			.map(this.extractData)
 			.catch(this.handleError);
 	}
-
 	getRides(): Observable<Ride[]> {
 		return this.http.get(this._ridesApi)
 			.map(this.extractData)

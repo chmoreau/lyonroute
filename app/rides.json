@@ -1,10 +1,10 @@
 {
 	"data" : [
 		{
-			"waypoints": [{"id": 1, "name": "INSA"}],
+			"waypoints": [{"id": 1, "name": "INSA"}, {"id": 2, "name": "tete d'or"}],
 			"arrival": {"id": 2, "name": "Villeurbanne"},
 			"departure": {"id": 2, "name": "Part-dieu"},
-			"frequency": "Aller simple",
+			"duration" : 20,
 			"date": "2016-05-22T07:00:00Z",
 			"detour": 2,
 			"seatsAvi": 3,
@@ -14,7 +14,7 @@
 		{
 			"arrival": {"id": 2, "name": "Villeurbanne"},
 			"departure": {"id": 2, "name": "Part-dieu"},
-			"frequency": "Aller simple",
+			"duration" : 20,
 			"date": "2016-05-22T07:00:00Z",
 			"detour": 2,
 			"seatsAvi": 3,
@@ -25,7 +25,7 @@
 			"waypoints": [{"id": 1, "name": "INSA"}],
 			"arrival": {"id": 2, "name": "Villeurbanne"},
 			"departure": {"id": 2, "name": "Part-dieu"},
-			"frequency": "Aller simple",
+			"duration" : 20,
 			"date": "2016-05-22T07:00:00Z",
 			"detour": 2,
 			"seatsAvi": 3,
