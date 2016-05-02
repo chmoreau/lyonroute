@@ -1,3 +1,4 @@
+import {Review} from './review'
 export class User {
 
 	name: string;
