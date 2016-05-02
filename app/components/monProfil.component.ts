@@ -1,7 +1,7 @@
 import {Component, OnInit} from 'angular2/core';
 import {Router } from 'angular2/router';
 import {AppService} from '../services/app.service';
-import {Avis} from '../models/avis'
+import {Review} from '../models/review'
 
 
 @Component({
@@ -22,17 +22,17 @@ export class MonProfilComponent implements OnInit {
 
 	}
 	ngOnInit() {
-		this.getListAvis();
+		this.getListReview();
 	}
 
 
-	listAvis: Avis[];
+	listReview: Review[];
 	errorMessage: any;
 
-getListAvis() {
-	this._appService.getListAvis()
+	getListReview() {
+		this._appService.getListReview()
 			.subscribe(
-		listAvis => this.listAvis = listAvis,
+			listReview => this.listReview = listReview,
 			error => this.errorMessage = <any>error);
 	}
 

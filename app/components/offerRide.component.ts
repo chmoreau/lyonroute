@@ -28,26 +28,41 @@ export class OfferRideComponent{
     private _date: string;
     private _dateReturn: string;
     private _isReturn: boolean;
-    private _isFrequency: string;
-    private _frequency: boolean[];
+    private _isFrequency: boolean=false;
+    private _frequency: boolean[]=[false,false,false,false,false,false,false];
     private _detour: number;
     private _seats: number;
     private _mapDeparture: any;
     private _mapArrival: any;
 
 
+    changeFrequency(value : number){
+        console.log(this._isFrequency);
+        if (value == 0) this._isFrequency = false;
+        if (value == 1) this._isFrequency = true;
+    }
+
     modifyFrequency(day : number){
-
      
+        this._frequency[day] = !this._frequency[day];
 
-        console.log("fsfs");
     }
 
     sendRideOffer(){
         let waypoints: Place[];
         let passengers: Passenger[];
+
+        let stringFrequencies: string[]=[];
+        let days: string[] = ["lun.", "mar.", "mer.", "jeu.", "ven.", "sam.", "dim."];
+        let i = 0;
+        for ( i= 0; i < 7; i++){
+            if (this._frequency[i]) stringFrequencies.push(days[i]);
+        }
+
+        console.log(stringFrequencies);
       //  let newRide = new Ride(this.departure, waypoints, this.arrival, this.frequency, this.dateAller, this.detourMax, this.numberFreePlaces, passengers );
         // send
+
         if (this._dateReturn)
             {
                // let newRide1 = new Ride(this.arrival, waypoints, this.departure, this.frequency, this.dateRetour, this.detourMax, this.numberFreePlaces, passengers );

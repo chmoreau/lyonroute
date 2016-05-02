@@ -20,7 +20,7 @@ import {Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular
 				  <span class="fill-space"></span>
 				  <button  style="color:white" md-button  (click)="_router.navigate(['Search'])">Rechercher</button>
 				  <button  style="color:white" md-button  (click)="_router.navigate(['MyRides'])">Mes Trajets</button>
-				  <button  style="color:white" md-button  (click)="_router.navigate(['MonProfil'])">MonProfil</button>
+				  <button  style="color:white" md-button  (click)="_router.navigate(['MonProfil'])">Mon Profil</button>
 				</md-toolbar>
   				<router-outlet></router-outlet>`,
     directives: [ROUTER_DIRECTIVES, MdToolbar, MdButton],

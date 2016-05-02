@@ -4,6 +4,9 @@ export class User {
 	photo: string;
 	age: number;
 	rating: number;
-	car: string;a
+	car: string;
+	carRating: number;
+	carPhoto: string;
+	listReview: Review[];
 	
 }

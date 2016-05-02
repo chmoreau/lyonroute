@@ -9,37 +9,37 @@
 			</md-card>
 			<md-card>
 				<md-card-title>Fréquence</md-card-title >
-				<md-radio-group [(value)]="_isFrequency">
-	 				<md-radio-button value="">Une seule fois</md-radio-button>
-	  				<md-radio-button value="option_2">Trajet régulier</md-radio-button>
+				<md-radio-group>
+	 				<md-radio-button (change)="changeFrequency(0)">Une seule fois</md-radio-button>
+	  				<md-radio-button (change)="changeFrequency(1)">Trajet régulier</md-radio-button>
 				</md-radio-group>
 
-				<md-card *ngIf="(_isFrequency)">	
-					<md-checkbox align="end"
+				<md-card *ngIf="_isFrequency">	
+					<md-checkbox 
 	            		(change)="modifyFrequency(1)">
 			 			Lundi
 			    	</md-checkbox>
-					<md-checkbox align="end"
+					<md-checkbox 
 	            		(change)="modifyFrequency(2)">
 			 			Mardi
 			    	</md-checkbox>
-			    	<md-checkbox align="end"
+			    	<md-checkbox 
 	            		(change)="modifyFrequency(3)">
 			 			Mercredi
 			    	</md-checkbox>
-			    	<md-checkbox align="end"
+			    	<md-checkbox 
 	            		(change)="modifyFrequency(4)">
 			 			Jeudi
 			    	</md-checkbox>
-			    	<md-checkbox align="end"
+			    	<md-checkbox 
 	            		(change)="modifyFrequency(5)">
 			 			Vendredi
 			    	</md-checkbox>
-			    	<md-checkbox align="end"
+			    	<md-checkbox 
 	            		(change)="modifyFrequency(6)">
 			 			Samedi
 			    	</md-checkbox>
-			    	<md-checkbox align="end"
+			    	<md-checkbox 
 	            		(change)="modifyFrequency(7)">
 			 			Dimanche
 			    	</md-checkbox>

@@ -1,5 +1,5 @@
 import {User} from './User'
-export class Avis {
+export class Review {
 
 	author: User;
 	note: number;

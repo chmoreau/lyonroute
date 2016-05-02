@@ -44,17 +44,17 @@
 				<md-card>
 				<md-card-title>List Avis</md-card-title>
 					<md-list>
-						<md-list-item *ngFor="#avis of listAvis">  
+						<md-list-item *ngFor="#review of listReview">  
 						<div class="container" style="width: 100%;">
 							<img md-list-avatar src="img/pp.png" alt="...">
 	   					
 							<div class="header item">
-								<span style="font-weight: bold;" md-line> {{avis.author.name}} </span>
+								<span style="font-weight: bold;" md-line> {{review.author.name}} </span>
 							</div>
 							<div class="middle item">
-								<span>Note: {{avis.note}}<i class="material-icons subtext">star</i></span>
+								<span>Note: {{review.note}}<i class="material-icons subtext">star</i></span>
 							    <p md-line>
-							      <span style = "font-style: italic;"> {{avis.text}} </span>
+							      <span style = "font-style: italic;"> {{review.text}} </span>
 							    </p>		
 							</div>
 						</div>
