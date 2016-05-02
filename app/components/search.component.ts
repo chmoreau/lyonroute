@@ -7,8 +7,6 @@ import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MdCheckbox} from '@angular2-material/checkbox';
 import {FromToComponent} from './fromTo.component'
 
-
-
 @Component({
 	selector: 'search-component',
 	templateUrl: 'app/templates/search.component.html',

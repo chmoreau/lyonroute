@@ -6,7 +6,7 @@
 			"driverRating" : 3.4,
 			"driverCar" : "Renault Clio",
 			"ride" : {
-				"waypoints": [{"id": 1, "name": "INSA"}, {"id": 2, "name": "tete d'or"}],
+				"waypoints": [{"id": 1, "name": "INSA de Lyon"}, {"id": 2, "name": "parc de la tete d'or"}],
 				"arrival": {"id": 2, "name": "Villeurbanne"},
 				"departure": {"id": 2, "name": "Part-dieu"},
 				"date": "2016-05-22T07:00:00Z",
@@ -25,7 +25,7 @@
 			"frequency" : ["lun.","mar.","ven."],
 			"ride" : {
 				"arrival": {"id": 2, "name": "Place Bellecour"},
-				"departure": {"id": 2, "name": "INSA"},
+				"departure": {"id": 2, "name": "INSA de Lyon"},
 				"date": "2016-07-22T07:00:00Z",
 				"detour": 2,
 				"duration" : 15,
@@ -40,7 +40,7 @@
 			"driverRating" : 2.8,
 			"driverCar" : "Dacia logan",
 			"ride" : {
-				"waypoints": [{"id": 1, "name": "INSA"}, {"id": 2, "name": "Lyon 6"}],
+				"waypoints": [{"id": 1, "name": "INSA de Lyon"}, {"id": 2, "name": "Lyon 6"}],
 				"arrival": {"id": 2, "name": "Ecully"},
 				"departure": {"id": 2, "name": "Vaulx-en-Velin"},
 				"date": "2016-05-22T07:00:00Z",
@@ -57,7 +57,7 @@
 			"driverRating" : 5,
 			"driverCar" : "Taxi de Oui-Oui",
 			"ride" : {
-				"arrival": {"id": 2, "name": "INSA"},
+				"arrival": {"id": 2, "name": "INSA de Lyon"},
 				"departure": {"id": 2, "name": "Villeurbanne"},
 				"date": "2016-05-22T07:00:00Z",
 				"detour": 2,
@@ -73,7 +73,7 @@
 			"driverRating" : 4.7,
 			"driverCar" : "Mercedes class E4",
 			"ride" : {
-				"arrival": {"id": 2, "name": "INSA"},
+				"arrival": {"id": 2, "name": "INSA de Lyon"},
 				"departure": {"id": 2, "name": "Limonest"},
 				"date": "2016-05-22T07:00:00Z",
 				"detour": 2,

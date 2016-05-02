@@ -35,7 +35,6 @@ export class FromToComponent implements OnInit {
 		this._autocompleteD.addListener('place_changed', () => {
 			let place = this._autocompleteD.getPlace();
 			this.changeDeparture(place.formatted_address);
-			console.log(place);		
 		});
 		this._autocompleteA.addListener('place_changed', () => {
 			let place = this._autocompleteA.getPlace();

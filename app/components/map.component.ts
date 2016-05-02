@@ -1,46 +1,54 @@
-import {Component, Input, OnInit, EventEmitter, Output} from 'angular2/core';
+import {Component, Input, AfterViewInit} from 'angular2/core';
+
+declare var google: any;
 
 @Component({
     selector: 'map-directions',
-    template: `
-    <iframe width="{{width}}" height="{{height}}" frameborder="0" style="border:0"
-src="{{_src}}" allowfullscreen></iframe>`
-
+    template: `<div style="height: {{height}};width: {{width}}" id="map"></div>`,
 })
-export class MapComponent implements OnInit {
-	@Input('key') apiKey: string = "AIzaSyBAAJraPqzJLeidBDQZz_-izHgc9mP-0Bw";
+export class MapComponent implements AfterViewInit {
 	@Input('from') departure: string;
 	@Input('to') arrival: string;
-	@Input() waypoints: string[] = [];
+	@Input() waypoints = [];
 	@Input() width: number = 500;
 	@Input() height: number = 500;
-	private _src: string;
 
-	strWaypoints: string ="";
-	private _defaultUrl = "https://www.google.com/maps/embed/v1/place?q=lyon&key=" + this.apiKey;
-	private _directionsUrl = "https://www.google.com/maps/embed/v1/directions?origin=" +
-		this.departure + "&destination=" + this.arrival + this.strWaypoints + "&key=" + this.apiKey;
+	private _directionsService: any;
+	private _directionsDisplay: any;
+	private _map: any;
 
-
-	ngOnInit(){
-		if (this.departure && this.arrival) {
-			this._src = "https://www.google.com/maps/embed/v1/directions?origin=" +
-				this.departure + "&destination=" + this.arrival + this.strWaypoints + "&key=" + this.apiKey;
-		}
+	ngAfterViewInit() {
+		let myLatlng = new google.maps.LatLng(45.765343, 4.831995); // more or less the center of lyon
+		this._directionsDisplay = new google.maps.DirectionsRenderer;
+		let mapOptions = {
+			zoom: 11,
+			center: myLatlng
+		};
+		this._map = new google.maps.Map(document.getElementById("map"),
+			mapOptions);
+		this._directionsDisplay.setMap(this._map);
+		this._directionsService = new google.maps.DirectionsService();
+		this.updateMap();
 	}
+
 	ngOnChanges() {
-		if (this.waypoints.length) {
-			this.strWaypoints = "&waypoints=" + this.waypoints.join('|');
-		}
-		else {
-			this.strWaypoints = "";
-		}
-		if (this.departure && this.arrival) {
-			this._src = "https://www.google.com/maps/embed/v1/directions?origin=" +
-				this.departure + "&destination=" + this.arrival + this.strWaypoints + "&key=" + this.apiKey;
-		}
-		else {
-			this._src = this._defaultUrl;
+		this.updateMap();
+	}
+
+	private updateMap() {
+		if (this._directionsService && this.departure && this.arrival) {
+			let directionsRequest = {
+				origin: this.departure,
+				destination: this.arrival,
+				travelMode: google.maps.TravelMode.DRIVING,
+				waypoints: this.waypoints.map(wypt => { return { location: wypt } }),
+				optimizeWaypoints: true,
+			};
+			this._directionsService.route(directionsRequest, (response, status) => {
+				if (status === google.maps.DirectionsStatus.OK) {
+					this._directionsDisplay.setDirections(response);
+				}
+			});
 		}
 	}
 }

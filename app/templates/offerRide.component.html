@@ -5,7 +5,8 @@
 
         	<md-card style="margin-top: 15px">
 				<md-card-title>Départ et arrivée</md-card-title>
-   				<from-to (asyncDeparture)="_mapDeparture=$event" (asyncArrival)="_mapArrival=$event" [(arrival)]="_arrival" [(departure)]="_departure"></from-to>
+   				<from-to (arrival)="_arrival=$event" (departure)="_departure=$event"></from-to>
+
 			</md-card>
 			<md-card>
 				<md-card-title>Fréquence</md-card-title >
@@ -92,7 +93,7 @@
 
        		</div>
        	<div class="ui-grid-col-4" style="margin:15px">
-       		<map-directions [from]="_mapDeparture" [to]="_mapArrival"></map-directions>
+       		<map-directions [from]="_departure" [to]="_arrival"></map-directions>
        	</div>
         <div class="ui-grid-col-1"></div>
     </div>

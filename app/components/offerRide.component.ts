@@ -1,5 +1,4 @@
 import {Component} from 'angular2/core';
-import {AppService} from '../services/app.service'
 import {Place} from '../models/place'
 import {Router } from 'angular2/router';
 import {MdButton} from '@angular2-material/button';
@@ -35,9 +34,7 @@ export class OfferRideComponent{
     private _mapDeparture: any;
     private _mapArrival: any;
 
-
     changeFrequency(value : number){
-        console.log(this._isFrequency);
         if (value == 0) this._isFrequency = false;
         if (value == 1) this._isFrequency = true;
     }
@@ -59,7 +56,6 @@ export class OfferRideComponent{
             if (this._frequency[i]) stringFrequencies.push(days[i]);
         }
 
-        console.log(stringFrequencies);
       //  let newRide = new Ride(this.departure, waypoints, this.arrival, this.frequency, this.dateAller, this.detourMax, this.numberFreePlaces, passengers );
         // send
 
