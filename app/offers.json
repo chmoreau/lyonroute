@@ -66,6 +66,22 @@
 				"seats": 2,
 				"passengers": [{"name": "Bob"}]
 			}
+		},
+		{
+			"driverName":"Amjad",
+			"driverAge": 22,
+			"driverRating" : 4.7,
+			"driverCar" : "Mercedes class E4",
+			"ride" : {
+				"arrival": {"id": 2, "name": "INSA"},
+				"departure": {"id": 2, "name": "Limonest"},
+				"date": "2016-05-22T07:00:00Z",
+				"detour": 2,
+				"duration" : 26,
+				"seatsAvi": 1,
+				"seats": 2,
+				"passengers": [{"name": "Bob"}]
+			}
 		}
 	]
 }
