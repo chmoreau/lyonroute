@@ -16,9 +16,10 @@ import {Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular
     				<img class="logo" (click)="goHome()" src="img/logo_inverse.png">
 				  <strong>LyonRoute&nbsp;&nbsp;</strong> <span class="subtext">Un service de covoiturage différent des autres (si, si).</span>
 				  <span class="fill-space"></span>
+				  <button  style="color:white" md-button  (click)="_router.navigate(['OfferRide'])">publier</button>
 				  <button  style="color:white" md-button  (click)="_router.navigate(['Search'])">Rechercher</button>
-				  <button  style="color:white" md-button  (click)="_router.navigate(['MyRides'])">Mes Trajets</button>
-				  <button  style="color:white" md-button  (click)="_router.navigate(['MonProfil'])">Mon Profil</button>
+				  <button  style="color:white" md-button  (click)="_router.navigate(['MyRides'])">Vos Trajets</button>
+				  <button  style="color:white" md-button  (click)="_router.navigate(['MonProfil'])">Votre Profil</button>
 				</md-toolbar>
   				<router-outlet></router-outlet>`,
     directives: [ROUTER_DIRECTIVES, MdToolbar, MdButton],

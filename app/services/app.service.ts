@@ -15,6 +15,8 @@ export class AppService {
 	private _ridesApi = 'app/rides.json';
 	private _listReviewApi = 'app/listReview.json';
 
+	private _apiUrl = 'https://damp-retreat-67468.herokuapp.com/all_offers/insa/place%20bellecour';
+
 	getPlaces(): Observable<Place[]> {
 		return this.http.get(this._placesApi)
 			.map(this.extractData)

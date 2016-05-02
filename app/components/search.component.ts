@@ -22,14 +22,9 @@ export class SearchComponent  {
 	private _dateReturn: string;
 
 	gotoOffers() {
-		let link = ['Offers', { departure: this._departure, arrival: this._arrival }];	
+		let link = ['Offers', { departure: this._departure, arrival: this._arrival, date: this._date }];	
 		if (this._departure && this._arrival) {
-			if(this._isReturn && this._date && this._dateReturn) {
-				this._router.navigate(link);
-			}
-			else if(this._date){
-				this._router.navigate(link);
-			}
+			this._router.navigate(link);
 		}
 	}
 

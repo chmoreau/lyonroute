@@ -1,7 +1,6 @@
 <div class="ui-grid">
     <div class="ui-grid-row">
-        <div class="ui-grid-col-1"></div>
-        	<div class="ui-grid-col-6">
+        	<div class="ui-grid-col-7" style="margin-left: 15">
 
         	<md-card style="margin-top: 15px">
 				<md-card-title>Départ et arrivée</md-card-title>
@@ -11,41 +10,17 @@
 			<md-card>
 				<md-card-title>Fréquence</md-card-title >
 				<md-radio-group>
-	 				<md-radio-button (change)="changeFrequency(0)">Une seule fois</md-radio-button>
+	 				<md-radio-button checked="true" (change)="changeFrequency(0)">Une seule fois</md-radio-button>
 	  				<md-radio-button (change)="changeFrequency(1)">Trajet régulier</md-radio-button>
 				</md-radio-group>
 
-				<md-card *ngIf="_isFrequency">	
-					<md-checkbox 
-	            		(change)="modifyFrequency(1)">
-			 			Lundi
+				<div *ngIf="_isFrequency" style="margin-top: 12">	
+					<md-checkbox *ngFor="#day of _days, #i=index" style="margin-right: 6"
+	            		(change)="modifyFrequency(i+1)">
+			 			{{day}}
 			    	</md-checkbox>
-					<md-checkbox 
-	            		(change)="modifyFrequency(2)">
-			 			Mardi
-			    	</md-checkbox>
-			    	<md-checkbox 
-	            		(change)="modifyFrequency(3)">
-			 			Mercredi
-			    	</md-checkbox>
-			    	<md-checkbox 
-	            		(change)="modifyFrequency(4)">
-			 			Jeudi
-			    	</md-checkbox>
-			    	<md-checkbox 
-	            		(change)="modifyFrequency(5)">
-			 			Vendredi
-			    	</md-checkbox>
-			    	<md-checkbox 
-	            		(change)="modifyFrequency(6)">
-			 			Samedi
-			    	</md-checkbox>
-			    	<md-checkbox 
-	            		(change)="modifyFrequency(7)">
-			 			Dimanche
-			    	</md-checkbox>
- 			
-		   		</md-card>
+		   		</div>
+
 			</md-card>
 			<md-card>
 				<md-card-title>Date et heure</md-card-title>
@@ -92,9 +67,8 @@
 			</md-card>
 
        		</div>
-       	<div class="ui-grid-col-4" style="margin:15px">
+       	<div class="ui-grid-col-5" style="margin:15px">
        		<map-directions [from]="_departure" [to]="_arrival"></map-directions>
        	</div>
-        <div class="ui-grid-col-1"></div>
     </div>
 </div>

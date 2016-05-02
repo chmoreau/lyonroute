@@ -1,7 +1,8 @@
-<md-card style="margin: 15px">
+<md-card style="margin: 15 35 15 35">
 	<md-card-title>Résultats pour le trajet {{departure | uppercase}} - {{arrival | uppercase}}</md-card-title>
 	Trier par...
 	<md-radio-group>
+	  <md-radio-button value="date" checked="true" (change)="onChangeSort($event)">Date</md-radio-button>
 	  <md-radio-button value="duration" (change)="onChangeSort($event)">Durée du trajet</md-radio-button>
 	  <md-radio-button value="rating" (change)="onChangeSort($event)" >Note</md-radio-button>
 	  <md-radio-button value="seats" (change)="onChangeSort($event)">Nombre de places</md-radio-button>

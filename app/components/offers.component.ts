@@ -26,9 +26,7 @@ export class OffersComponent implements OnInit {
 	sortingOption: string="duration";
 	private _dialog: boolean = false;
 	private _selectedOffer: Offer;
-	constructor(private _routeParams: RouteParams, private _appService: AppService) {
-
-	}
+	constructor(private _routeParams: RouteParams, private _appService: AppService) {}
 
 	onChangeSort(event) {
 		if(event.value!=this.sortingOption) {
@@ -45,6 +43,10 @@ export class OffersComponent implements OnInit {
 					this.sortingOption = event.value;
 					this.offers.sort((a: Offer, b: Offer) => a.ride.seatsAvi - b.ride.seatsAvi);
 					break;
+				case "date":
+					this.sortingOption = event.value;
+					this.offers.sort((a: Offer, b: Offer) => this.getDate(a.ride.date).getTime() - this.getDate(b.ride.date).getTime());
+					break;
 				default:
 					break;
 			}
@@ -60,15 +62,19 @@ export class OffersComponent implements OnInit {
 	getOffers() {
 		this._appService.getOffers()
 			.subscribe(
-			offers => this.offers = offers,
+			offers => {
+				this.offers = offers
+				// By default, sort the offers by date
+				this.onChangeSort({ value: "date" });
+			},
 			error => this.errorMessage = <any>error);
 	}
 
-	getDate(date: any){
+	private getDate(date: any){
 		return new Date(date);
 	}
 
-	showDialog(index: number) {
+	private showDialog(index: number) {
 		this._dialog = true;
 		this._selectedOffer = this.offers[index];
 	}

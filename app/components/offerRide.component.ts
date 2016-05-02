@@ -28,11 +28,11 @@ export class OfferRideComponent{
     private _dateReturn: string;
     private _isReturn: boolean;
     private _isFrequency: boolean=false;
-    private _frequency: boolean[]=[false,false,false,false,false,false,false];
+    private _frequency: boolean[]=new Array(7);
     private _detour: number;
     private _seats: number;
-    private _mapDeparture: any;
-    private _mapArrival: any;
+    private _days = ["lun.", "mar.", "mer.", "jeu.", "ven.", "sam.", "dim."];
+
 
     changeFrequency(value : number){
         if (value == 0) this._isFrequency = false;
@@ -41,7 +41,7 @@ export class OfferRideComponent{
 
     modifyFrequency(day : number){
      
-        this._frequency[day] = !this._frequency[day];
+        this._frequency[day-1] = !this._frequency[day-1];
 
     }
 
@@ -52,9 +52,11 @@ export class OfferRideComponent{
         let stringFrequencies: string[]=[];
         let days: string[] = ["lun.", "mar.", "mer.", "jeu.", "ven.", "sam.", "dim."];
         let i = 0;
-        for ( i= 0; i < 7; i++){
-            if (this._frequency[i]) stringFrequencies.push(days[i]);
+        for (i = 0; i < this._frequency.length; i++){
+            if (this._frequency[i]) 
+                stringFrequencies.push(this._days[i]);
         }
+        console.log(stringFrequencies);
 
       //  let newRide = new Ride(this.departure, waypoints, this.arrival, this.frequency, this.dateAller, this.detourMax, this.numberFreePlaces, passengers );
         // send
