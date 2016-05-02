@@ -2,36 +2,57 @@
 	"data": [
 		{
 			"author" : {
-				"name" : "Django",
+				"name" : "Obama",
 				"photo" : "/img/pp.png",
 				"age" : 100,
 				"rating" : 0.1,
-				"car" : "Lada"
+				"car" : "Mercedes"
 			},
 			"note" : 3,
-			"text" : "Esclave Afro-Américain libéré par King Schultz en échange de son aide."
+			"text" : "A thug"
 		},
 		{
 			"author" : {
-				"name" : "lopz",
+				"name" : "Hollande",
 				"photo" : "/img/pp.png",
 				"age" : 98,
 				"rating" : 10,
 				"car" : "Lada"
 			},
-			"note" : 1,
-			"text" : "Mauvais...."
+			"note" : 3,
+			"text" : "Bien, mais a fait un detour non prevu en Ukraine"
 		},
 		{
 			"author" : {
-				"name" : "Vasile",
+				"name" : "Merkel",
 				"photo" : "/img/pp.png",
 				"age" : 98,
 				"rating" : 10,
 				"car" : "Lada"
 			},
 			"note" : 4,
+		},
+		{
+			"author" : {
+				"name" : "Proshenko",
+				"photo" : "/img/pp.png",
+				"age" : 98,
+				"rating" : 10,
+				"car" : "bicyclette"
+			},
+			"note" : 4,
 			"text" : "Tres bien...."
+		},
+		{
+			"author" : {
+				"name" : "Stalin",
+				"photo" : "/img/pp.png",
+				"age" : 98,
+				"rating" : 10,
+				"car" : "My bro"
+			},
+			"note" : 4,
+			"text" : "My bro."
 		}
 	]
 }
