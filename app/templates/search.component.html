@@ -13,7 +13,7 @@
 	<img md-card-image class="cover-img" src="img/lyon.jpg">
 
 	<md-card-subtitle>Trajet</md-card-subtitle>
-	<from-to [(arrival)]="_arrival" [(departure)]="_departure"></from-to>
+	<from-to (arrival)="_arrival=$event" (departure)="_departure=$event"></from-to>
 	<md-card-subtitle style="margin-top: 25px;">Date et horaire</md-card-subtitle>
 	<md-checkbox (change)="isReturn=!isReturn">Aller retour (facultatif)</md-checkbox>
 	<div class="ui-grid">

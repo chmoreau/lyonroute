@@ -1,73 +1,46 @@
-import {Component, OnInit, Input, Output, EventEmitter} from 'angular2/core';
-import {Place} from '../models/place'
-import {AutoComplete} from 'primeng/primeng';
-import {AppService} from '../services/app.service';
-import {Control}    from 'angular2/common';
+import {Component, OnInit, Output, EventEmitter} from 'angular2/core';
+
+declare var google: any;
 
 @Component({
 	selector: 'from-to',
 	templateUrl: 'app/templates/fromTo.component.html',
 	styleUrls: ['app/styles/fromTo.component.css'],
-	directives: [AutoComplete]
+	directives: []
 })
 export class FromToComponent implements OnInit {
-	@Input() departure: string;
-	@Input() arrival: string;
-	@Output() departureChange = new EventEmitter();
-	@Output() arrivalChange = new EventEmitter();
-	// emit the values of departure and arrival with a debounce time
-	@Output() asyncDeparture = new EventEmitter();
-	@Output() asyncArrival = new EventEmitter();
+	@Output('departure') departureChange = new EventEmitter();
+	@Output('arrival') arrivalChange = new EventEmitter();
 
-	private _departureControl = new Control();
-	private _arrivalControl = new Control();
-	
-	filteredDepartures: string[];
-	filteredArrivals: string[];
-	places: Place[];
-	errorMessage: any;
-	constructor(private _appService: AppService) {
-		this._departureControl.valueChanges
-            .debounceTime(2500)
-            .distinctUntilChanged()
-            .subscribe(_departureControl => this.asyncDeparture.emit(_departureControl));
-        this._arrivalControl.valueChanges
-            .debounceTime(2500)
-            .distinctUntilChanged()
-            .subscribe(_arrivalControl => this.asyncArrival.emit(_arrivalControl));
+	private _service: any;
+	private _autocompleteA: any;
+	private _autocompleteD: any;
+
+	constructor() {
+		this._service = new google.maps.places.AutocompleteService();      
+	}
+	changeDeparture(value: string) {
+		this.departureChange.emit(value);
+	}
+	changeArrival(value: string) {
+		this.arrivalChange.emit(value);
 	}
 
 	ngOnInit() {
-		this.getPlaces();
-	}
-	getPlaces() {
-		this._appService.getPlaces()
-			.subscribe(
-			places => this.places = places,
-			error => this.errorMessage = <any>error);
-	}
-	filterDepartures(event) {
-		this.filteredDepartures = this.searchPlaces(event.query);
-	}
+		let inputD = document.getElementById('departure-input');
+		let inputA = document.getElementById('arrival-input');
+		this._autocompleteD = new google.maps.places.Autocomplete(inputD);
+		this._autocompleteA = new google.maps.places.Autocomplete(inputA);
 
-	filterArrivals(event) {
-		this.filteredArrivals = this.searchPlaces(event.query);
+		this._autocompleteD.addListener('place_changed', () => {
+			let place = this._autocompleteD.getPlace();
+			this.changeDeparture(place.formatted_address);
+			console.log(place);		
+		});
+		this._autocompleteA.addListener('place_changed', () => {
+			let place = this._autocompleteA.getPlace();
+			this.changeArrival(place.formatted_address);
+		});
 	}
-    searchPlaces(query) {
-		//in a real application, make a request to a remote url with the query and return filtered results, for demo we filter at client side
-        let filtered: any[] = [];
-        if (query.length != 0) {
-			for (let i = 0; i < this.places.length; i++) {
-				let place = this.places[i];
-				if (place.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-					filtered.push(place.name);
-				}
-			}
-        }
-        return filtered;
-	}
-
-
-
 
 }

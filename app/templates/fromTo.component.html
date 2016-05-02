@@ -1,14 +1,14 @@
+{{departure}}
 <div class="ui-grid">
 	<div class="ui-grid-row">
 		
 		<div class="ui-grid-col-6 container">
-		<i class="material-icons">home</i>
-			<p-autoComplete (onSelect)="departureChange.emit(departure)" (keyup)="departureChange.emit(departure)" placeholder="Départ" [size]="25" [minLength]="1" [ngFormControl]="_departureControl" [(ngModel)]="departure" [suggestions]="filteredDepartures" (completeMethod)="filterDepartures($event)"></p-autoComplete>
+			<i class="material-icons">home</i>
+			<input id="departure-input" #el (change)="changeDeparture(el.value)" class="controls" type="text" placeholder="Enter a location">
 		</div>
-		
 		<div class="ui-grid-col-6 container">
-		<i class="material-icons">place</i>
-			<p-autoComplete (onSelect)="arrivalChange.emit(arrival)" (keyup)="arrivalChange.emit(arrival)"  placeholder="Arrivée" [size]="25" [minLength]="1" [ngFormControl]="_arrivalControl" [(ngModel)]="arrival" [suggestions]="filteredArrivals" (completeMethod)="filterArrivals($event)"></p-autoComplete>
+			<i class="material-icons">place</i>
+			<input id="arrival-input" #el (change)="changeArrival(el.value)" class="controls" type="text" placeholder="Enter a location">
 		</div>
 	</div>
 </div>

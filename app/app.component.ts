@@ -3,9 +3,7 @@ import {SearchComponent} from './components/search.component';
 import {OffersComponent} from './components/offers.component';
 import {OfferRideComponent} from './components/offerRide.component';
 import {MyRidesComponent} from './components/myRides.component';
-
 import {MonProfilComponent} from './components/monProfil.component';
-
 import {MdToolbar} from '@angular2-material/toolbar';
 import {MdButton} from '@angular2-material/button';
 import {AppService} from './services/app.service'
@@ -56,7 +54,8 @@ import {Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular
 ])
 
 export class AppComponent {
-	constructor(private _router: Router) {}	
+	constructor(private _router: Router) {
+	}	
 	private goHome() {
 		this._router.navigate(['Search']);
 	}
