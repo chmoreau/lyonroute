@@ -19,16 +19,16 @@
 		},
 		{
 			"driverName":"Charles",
-			"driverAge": 22,
+			"driverAge": 20,
 			"driverRating" : 1.6,
-			"driverCar" : "Renault Clio",
+			"driverCar" : "Citroen C3",
 			"frequency" : ["lun.","mar.","ven."],
 			"ride" : {
 				"arrival": {"id": 2, "name": "Place Bellecour"},
 				"departure": {"id": 2, "name": "INSA"},
-				"date": "2016-05-22T07:00:00Z",
+				"date": "2016-07-22T07:00:00Z",
 				"detour": 2,
-				"duration" : 20,
+				"duration" : 15,
 				"seatsAvi": 3,
 				"seats": 4,
 				"passengers": [{"name": "Bob"}, {"name": "Michel"}]
@@ -38,17 +38,33 @@
 			"driverName":"Razvan",
 			"driverAge": 22,
 			"driverRating" : 2.8,
-			"driverCar" : "Dacia",
+			"driverCar" : "Dacia logan",
 			"ride" : {
 				"waypoints": [{"id": 1, "name": "INSA"}, {"id": 2, "name": "Lyon 6"}],
 				"arrival": {"id": 2, "name": "Ecully"},
 				"departure": {"id": 2, "name": "Vaulx-en-Velin"},
 				"date": "2016-05-22T07:00:00Z",
 				"detour": 2,
-				"duration" : 20,
-				"seatsAvi": 3,
-				"seats": 4,
-				"passengers": [{"name": "Bob"}, {"name": "Michel"}]
+				"duration" : 45,
+				"seatsAvi": 1,
+				"seats": 2,
+				"passengers": [{"name": "Bob"}]
+			}
+		},
+		{
+			"driverName":"Orlando",
+			"driverAge": 22,
+			"driverRating" : 5,
+			"driverCar" : "Taxi de Oui-Oui",
+			"ride" : {
+				"arrival": {"id": 2, "name": "INSA"},
+				"departure": {"id": 2, "name": "Villeurbanne"},
+				"date": "2016-05-22T07:00:00Z",
+				"detour": 2,
+				"duration" : 5,
+				"seatsAvi": 1,
+				"seats": 2,
+				"passengers": [{"name": "Bob"}]
 			}
 		}
 	]
