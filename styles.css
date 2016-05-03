@@ -67,6 +67,12 @@ button {
   display: flex; /* or inline-flex */	
 }
 
+.container-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .subtext {
 	font-size: 80% !important;
 }

@@ -10,8 +10,6 @@ import {AppService} from '../services/app.service';
 import {Offer} from '../models/offer';
 import {Dialog} from 'primeng/primeng';
 
-
-
 @Component({
 	selector: 'offers-component',
 	templateUrl: 'app/templates/offers.component.html',

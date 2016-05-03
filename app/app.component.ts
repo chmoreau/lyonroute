@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import {SearchComponent} from './components/search.component';
 import {OffersComponent} from './components/offers.component';
+import {LoginComponent} from './components/login.component';
 import {OfferRideComponent} from './components/offerRide.component';
 import {MyRidesComponent} from './components/myRides.component';
 import {MonProfilComponent} from './components/monProfil.component';
@@ -51,6 +52,11 @@ import {Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular
 		path:'/monProfil',
 		name: 'MonProfil',
 		component: MonProfilComponent
+	},
+	{
+		path: '/login',
+		name: 'Login',
+		component: LoginComponent
 	}
 ])
 
