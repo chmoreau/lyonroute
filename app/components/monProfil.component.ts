@@ -24,7 +24,7 @@ export class MonProfilComponent implements OnInit {
 	}
 	ngOnInit() {
 		this.getListReview();
-		
+		//this.generateDummyOffers(1000);
 	}
 
 
@@ -36,23 +36,22 @@ export class MonProfilComponent implements OnInit {
 			.subscribe(
 			listReview => this.listReview = listReview,
 			error => this.errorMessage = <any>error);
+	}
 
-	/*	this._appService.getStuff()
+	private generateDummyOffers(number: number) {
+		this._appService.getStuff()
 			.subscribe(
 				places => {
-					for (let i = 0 ; i<1000 ; i++) {
-						let i = Math.floor(Math.random() * 1000);
-						let j = Math.floor(Math.random() * 1000);
+					for (let i = 0 ; i<number ; i++) {
+						let i = Math.round(Math.random() * 1000);
+						let j = Math.round(Math.random() * 1000);
 						let offer = this._appService.genereDummyOffer(places[i], places[j]);
-						console.log(offer);
 						this._appService.addOffer(offer)
 							.subscribe(response => console.log(response));
 					}
 				},
-				error => this.errorMessage = <any>error);*/
-
+				error => this.errorMessage = <any>error);
 	}
-
 	private getRating(index: number) {
 		return new Array(this.listReview[index].note);
 	}
