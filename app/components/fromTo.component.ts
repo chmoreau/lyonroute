@@ -1,4 +1,6 @@
 import {Component, OnInit, Output, EventEmitter} from 'angular2/core';
+import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
+
 
 declare var google: any;
 
@@ -6,7 +8,7 @@ declare var google: any;
 	selector: 'from-to',
 	templateUrl: 'app/templates/fromTo.component.html',
 	styleUrls: ['app/styles/fromTo.component.css'],
-	directives: []
+	directives: [MD_INPUT_DIRECTIVES]
 })
 export class FromToComponent implements OnInit {
 	@Output('departure') departureChange = new EventEmitter();

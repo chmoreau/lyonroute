@@ -1,14 +1,13 @@
-{{departure}}
-<div class="ui-grid">
-	<div class="ui-grid-row">
-		
-		<div class="ui-grid-col-6 container">
-			<i class="material-icons">home</i>
-			<input id="departure-input" #el (change)="changeDeparture(el.value)" class="controls" type="text" placeholder="Départ">
-		</div>
-		<div class="ui-grid-col-6 container">
-			<i class="material-icons">place</i>
-			<input id="arrival-input" #el (change)="changeArrival(el.value)" class="controls" type="text" placeholder="Arrivée">
-		</div>
+<div class="container" style="justify-content: space-between;">
+	<div class="container" style="align-items: flex-end;  flex-grow: 1; padding-right: 5">
+		<i class="material-icons">home</i>
+		<input id="departure-input" #el (keyup)="changeDeparture(el.value)" class="controls" type="text" placeholder="Départ">
 	</div>
+
+	<div class="container" style="align-items: flex-end; flex-grow: 1; padding-left: 5">
+		<i class="material-icons">place</i>
+		<input id="arrival-input" #el2 (keyup)="changeArrival(el2.value)" class="controls" type="text" placeholder="Arrivée">
+	</div>	
 </div>
+
+			

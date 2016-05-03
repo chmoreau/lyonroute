@@ -13,10 +13,10 @@
 				      	<md-input [(ngModel)]="form.firstname" required placeholder="Prénom" style="width: 45%;"></md-input>
 				      	<md-input [(ngModel)]="form.lastname" required placeholder="Nom" style="width: 45%;"></md-input>
 				      </div>
-				      <md-input [(ngModel)]="form.telnumber" required placeholder="Numéro de téléphone"></md-input><br>
+				      <md-input type="tel" [(ngModel)]="form.telnumber" required placeholder="Numéro de téléphone"></md-input><br>
 				      <md-input [(ngModel)]="form.address" required placeholder="Adresse" style="width: 100%;"></md-input>
 				      <md-input [(ngModel)]="form.addressPlus" placeholder="Complément d'adresse (facultatif)" style="width: 100%;"></md-input>
-				      <md-input [(ngModel)]="form.email" required placeholder="Adresse mail" style="width: 100%;"></md-input>
+				      <md-input type="email" [(ngModel)]="form.email" required placeholder="Adresse mail" style="width: 100%;"></md-input>
 				      <div class="container" style="justify-content: space-between;">
 				      	<md-input [(ngModel)]="form.password" type="password" required placeholder="Mot de passe" style="width: 45%;"></md-input>
 				      	<md-input [(ngModel)]="form.passwordConfirm" type="password" required placeholder="Mot de passe (confirmation)" style="width: 45%;"></md-input>
