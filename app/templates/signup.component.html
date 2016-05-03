@@ -1,0 +1,36 @@
+<div class="ui-grid">
+	<div class="ui-grid-row">
+		<div class="ui-grid-col-3"></div>
+		<div class="ui-grid-col-6">
+			<md-card style="margin: 15 35 15 35">
+			<md-card-title>Inscription</md-card-title>
+				<md-card-content class="container" style="flex-direction: column;align-items: stretch;">
+					<img md-card-avatar src="img/logo.png" style="height: 120; width: 120; margin: auto">
+					<md-card-subtitle style="margin-top: 10">Vous devez remplir tous les champs obligatoires (*)</md-card-subtitle>
+	    			<form (ngSubmit)="onSubmit()">
+				      <md-input placeholder="Pays (désactivé)" disabled value="France"></md-input>
+				      <div class="container" style="justify-content: space-between;">
+				      	<md-input [(ngModel)]="form.firstname" required placeholder="Prénom" style="width: 45%;"></md-input>
+				      	<md-input [(ngModel)]="form.lastname" required placeholder="Nom" style="width: 45%;"></md-input>
+				      </div>
+				      <md-input [(ngModel)]="form.telnumber" required placeholder="Numéro de téléphone"></md-input><br>
+				      <md-input [(ngModel)]="form.address" required placeholder="Adresse" style="width: 100%;"></md-input>
+				      <md-input [(ngModel)]="form.addressPlus" placeholder="Complément d'adresse (facultatif)" style="width: 100%;"></md-input>
+				      <md-input [(ngModel)]="form.email" required placeholder="Adresse mail" style="width: 100%;"></md-input>
+				      <div class="container" style="justify-content: space-between;">
+				      	<md-input [(ngModel)]="form.password" type="password" required placeholder="Mot de passe" style="width: 45%;"></md-input>
+				      	<md-input [(ngModel)]="form.passwordConfirm" type="password" required placeholder="Mot de passe (confirmation)" style="width: 45%;"></md-input>
+				      </div>
+				      <div class="container" style="justify-content: space-between; align-items: baseline; margin-top: 15">
+				      		<span *ngIf="_confirm" style="color: var(--accent">Inscription réussie ! Vous allez être redirigé vers la page de connexion dans quelques instants...</span>
+				      		<span [hidden]="!_pwNotMatch" class="primary-bold">Les mots de passes ne corespondent pas.</span>
+				      		<span></span>
+							<button  style="margin-left: 5" md-raised-button color="primary">inscription</button>
+						</div>
+	    			</form>
+  				</md-card-content>
+			</md-card>
+		</div>
+	</div>
+</div>
+

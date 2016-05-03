@@ -24,7 +24,7 @@ export class MonProfilComponent implements OnInit {
 	}
 	ngOnInit() {
 		this.getListReview();
-		//this.generateDummyOffers(1000);
+		//this.generateDummyOffers(50);
 	}
 
 

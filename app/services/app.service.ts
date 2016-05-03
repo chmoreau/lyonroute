@@ -17,7 +17,28 @@ export class AppService {
 	private _baseUrl = 'https://damp-retreat-67468.herokuapp.com/';
 	private _getOffer = 'all_offers/';
 	private _makeOffer = "make_offer/";
+	private _login = "login/";
+	private _signup = "register/";
 	
+	login(email: string, password: string): Observable<any> {
+		let url = this._baseUrl+this._login;
+		let body = JSON.stringify({ data: {email : email, password: password} });
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(url, body, options)
+			.map(this.extractData)
+			.catch(this.handleError);
+	}
+
+	signup(form: any): Observable<any> {
+		let url = this._baseUrl + this._signup;
+		let body = JSON.stringify({ data: form });
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(url, body, options)
+			.map(this.extractData)
+			.catch(this.handleError);
+	}
 
 	getStuff(): Observable<any> {
 		return this.http.get(this._url)
@@ -85,7 +106,7 @@ export class AppService {
 		let arrival = { "id": 1, "name": to};
 		let name = this.generateName();
 		let offer = {
-			driverEmail: name+"@lyonroute.com",
+			driverEmail: "stancioiu.razvan@yahoo.com",//name+"@lyonroute.com",
 			driverName: name,
 			driverAge: 18+Math.round(Math.random()* 50),
 			driverRating: Math.round(Math.random()*5),
