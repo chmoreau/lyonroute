@@ -54,8 +54,8 @@ export class OffersComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.departure = this._routeParams.get('departure');
-		this.arrival = this._routeParams.get('arrival');
+		this.departure = this._routeParams.get('departure').replace(new RegExp("%20",'g'), " ");
+		this.arrival = this._routeParams.get('arrival').replace(new RegExp("%20", 'g'), " ");
 		this.getOffers();
 	}
 

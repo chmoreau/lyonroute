@@ -10,14 +10,14 @@ import {Observable}     from 'rxjs/Observable';
 export class AppService {
 	constructor(private http: Http) { }
 
-	private _placesApi = 'app/places.json';
 	private _offersApi = 'app/offers.json';
-	private _ridesApi = 'app/rides.json';
 	private _listReviewApi = 'app/listReview.json';
-
-	private _apiUrl = 'https://damp-retreat-67468.herokuapp.com/all_offers/';
-	private _addOfferApi = "https://damp-retreat-67468.herokuapp.com/make_offer/";
 	private _url = "app/rues.json";
+
+	private _baseUrl = 'https://damp-retreat-67468.herokuapp.com/';
+	private _getOffer = 'all_offers/';
+	private _makeOffer = "make_offer/";
+	
 
 	getStuff(): Observable<any> {
 		return this.http.get(this._url)
@@ -29,33 +29,24 @@ export class AppService {
 	}
 
 	addOffer(offer: any): Observable<any> {
+		let url = this._baseUrl + this._makeOffer;
 		let body = JSON.stringify({ data: offer });
 		let headers = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: headers });
-
-		return this.http.post(this._addOfferApi, body, options)
+		return this.http.post(url, body, options)
 			.map(this.extractData)
 			.catch(this.handleError);
 
 	}
 
-
-	getPlaces(): Observable<Place[]> {
-		return this.http.get(this._apiUrl)
-			.map(this.extractData)
-			.catch(this.handleError);
-	}
 	getOffers(departure?: string, arrival?: string): Observable<Offer[]> {
-		let url = this._apiUrl;
-		if (departure && arrival)
-			url += departure + "/" + arrival;
-		console.log(url);
+		let url = this._baseUrl + this._getOffer;
+		if (departure && arrival) {
+			let addrD = departure.split(',');
+			let addrA = arrival.split(',');
+			url += addrD[0] + "/" + addrA[0];
+		}
 		return this.http.get(url)
-			.map(this.extractData)
-			.catch(this.handleError);
-	}
-	getRides(): Observable<Ride[]> {
-		return this.http.get(this._ridesApi)
 			.map(this.extractData)
 			.catch(this.handleError);
 	}
@@ -81,29 +72,34 @@ export class AppService {
 	}
 
 	private generateName(): string {
-		let names = ['Bob', 'Kevin', 'Michel', "Patrick", "Richard"];
-		return names[Math.floor(Math.random() * names.length)];
+		let names = ['Bob', 'Kevin', 'Michel', "Patrick", "Richard", "Razvan", "Orlando", "Charles","Amjad"];
+		return names[Math.round(Math.random() * names.length)];
+	}
+	private generateCar(): string {
+		let cars = ['Renault Clio', 'Dacia Logan', "Mercedes classe A", "Citroen C3", "Fiat 500", "Renault Megane"];
+		return cars[Math.round(Math.random() * cars.length)];
 	}
 
 	genereDummyOffer(from: string, to: string): any {
 		let departure = { "id": 1, "name": from};
 		let arrival = { "id": 1, "name": to};
+		let name = this.generateName();
 		let offer = {
-			driverEmail: "stancioiu.razvan@yahoo.com",
-			driverName: this.generateName(),
-			driverAge: 25,
-			driverRating: Math.floor(Math.random())*5,
-			driverCar: "C3",
+			driverEmail: name+"@lyonroute.com",
+			driverName: name,
+			driverAge: 18+Math.round(Math.random()* 50),
+			driverRating: Math.round(Math.random()*5),
+			driverCar: this.generateCar(),
 			frequency: [],
 			ride: {
 				departure: departure,
 				arrival : arrival,
 				date: Date.now().toString(),
-				detour: Math.floor(Math.random()) * 10,
+				detour: Math.round(Math.random() * 10),
 				seats: 4,
-				duration: 10+Math.floor(Math.random()) * 40,
-				seatsAvi: 2
-				//passengers: [{name: "Dupond"}, {name: "Dupont"}]
+				duration: 10 + Math.round(Math.random() * 40),
+				seatsAvi: 2,
+				passengers: [{name: "Dupond"}, {name: "Dupont"}]
 			},
 		}
 		return offer;
