@@ -16,6 +16,7 @@ export class LoginComponent {
 	constructor(private _appService: AppService, private _router: Router) {}
 	email: string = "";
 	password: string = "";
+	private _invalidLogin = false;
 
 	onSubmit() {
 		this._appService
@@ -23,6 +24,9 @@ export class LoginComponent {
 			.subscribe(response => {
 				if(response.res) {
 					this._router.navigate(['Search']);
+				}
+				else{
+					this._invalidLogin = true;
 				}
 			});
 	}
