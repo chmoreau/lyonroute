@@ -22,7 +22,10 @@ export class SearchComponent  {
 	private _dateReturn: string;
 
 	gotoOffers() {
-		let link = ['Offers', { departure: this._departure, arrival: this._arrival, date: this._date }];	
+		let isReturnString = "";
+		if (this._isReturn) isReturnString = "1"
+		else isReturnString = "0";
+		let link = ['Offers', { departure: this._departure, arrival: this._arrival, date: this._date, dateReturn: this._dateReturn, isReturn: isReturnString }];	
 		if (this._departure && this._arrival) {
 			this._router.navigate(link);
 		}
