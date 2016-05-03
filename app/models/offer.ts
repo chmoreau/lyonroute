@@ -5,8 +5,10 @@ export class Offer {
 	driverRating: number;
 	driverCar: string;
 	frequency: string[];
-	
 	ride: Ride;
 	returnRide: Ride;
 
+	constructor() {
+		
+	}
 }

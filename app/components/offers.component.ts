@@ -11,7 +11,7 @@ import {Offer} from '../models/offer';
 import {Dialog} from 'primeng/primeng';
 
 
- 
+
 @Component({
 	selector: 'offers-component',
 	templateUrl: 'app/templates/offers.component.html',
@@ -32,23 +32,23 @@ export class OffersComponent implements OnInit {
 		if(event.value!=this.sortingOption) {
 			switch (event.value) {
 				case "duration":
-					this.sortingOption = event.value;
-					this.offers.sort((a:Offer, b:Offer) => a.ride.duration-b.ride.duration);
-					break;
+				this.sortingOption = event.value;
+				this.offers.sort((a:Offer, b:Offer) => a.ride.duration-b.ride.duration);
+				break;
 				case "rating":
-					this.sortingOption = event.value;
-					this.offers.sort((a: Offer, b: Offer) => -a.driverRating + b.driverRating);
-					break;
+				this.sortingOption = event.value;
+				this.offers.sort((a: Offer, b: Offer) => -a.driverRating + b.driverRating);
+				break;
 				case "seats":
-					this.sortingOption = event.value;
-					this.offers.sort((a: Offer, b: Offer) => a.ride.seatsAvi - b.ride.seatsAvi);
-					break;
+				this.sortingOption = event.value;
+				this.offers.sort((a: Offer, b: Offer) => a.ride.seatsAvi - b.ride.seatsAvi);
+				break;
 				case "date":
-					this.sortingOption = event.value;
-					this.offers.sort((a: Offer, b: Offer) => this.getDate(a.ride.date).getTime() - this.getDate(b.ride.date).getTime());
-					break;
+				this.sortingOption = event.value;
+				this.offers.sort((a: Offer, b: Offer) => this.getDate(a.ride.date).getTime() - this.getDate(b.ride.date).getTime());
+				break;
 				default:
-					break;
+				break;
 			}
 		}
 	}
@@ -60,8 +60,8 @@ export class OffersComponent implements OnInit {
 	}
 
 	getOffers() {
-		this._appService.getOffers()
-			.subscribe(
+		this._appService.getOffers(this.departure, this.arrival)
+		.subscribe(
 			offers => {
 				this.offers = offers
 				// By default, sort the offers by date

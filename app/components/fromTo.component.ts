@@ -12,13 +12,9 @@ export class FromToComponent implements OnInit {
 	@Output('departure') departureChange = new EventEmitter();
 	@Output('arrival') arrivalChange = new EventEmitter();
 
-	private _service: any;
 	private _autocompleteA: any;
 	private _autocompleteD: any;
 
-	constructor() {
-		this._service = new google.maps.places.AutocompleteService();      
-	}
 	changeDeparture(value: string) {
 		this.departureChange.emit(value);
 	}
@@ -29,8 +25,12 @@ export class FromToComponent implements OnInit {
 	ngOnInit() {
 		let inputD = document.getElementById('departure-input');
 		let inputA = document.getElementById('arrival-input');
-		this._autocompleteD = new google.maps.places.Autocomplete(inputD);
-		this._autocompleteA = new google.maps.places.Autocomplete(inputA);
+		let options = {
+			componentRestrictions: { country: 'fr' }
+		};
+		this._autocompleteD = new google.maps.places.Autocomplete(inputD, options);
+		this._autocompleteA = new google.maps.places.Autocomplete(inputA, options);
+		
 
 		this._autocompleteD.addListener('place_changed', () => {
 			let place = this._autocompleteD.getPlace();

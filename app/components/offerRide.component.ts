@@ -56,7 +56,6 @@ export class OfferRideComponent{
             if (this._frequency[i]) 
                 stringFrequencies.push(this._days[i]);
         }
-        console.log(stringFrequencies);
 
       //  let newRide = new Ride(this.departure, waypoints, this.arrival, this.frequency, this.dateAller, this.detourMax, this.numberFreePlaces, passengers );
         // send

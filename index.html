@@ -69,12 +69,14 @@
                     format: 'cjs',
                     defaultExtension: 'js',
                     main: 'toolbar.js'
-                  }
+                  },
+                  'rxjs': {defaultExtension: 'js'}
             },
             map: {
                 'angular2': 'node_modules/angular2',
                 'primeng': 'node_modules/primeng',
-                '@angular2-material' : 'node_modules/@angular2-material'
+                '@angular2-material' : 'node_modules/@angular2-material',
+                'rxjs': 'node_modules/rxjs'
             }
       });
       System.import('dist/js/main')
@@ -89,6 +91,6 @@
   </head>
   <!-- 3. Display the application -->
   <body>
-    <my-app>Loading...</my-app>
+    <my-app></my-app>
   </body>
 </html>
