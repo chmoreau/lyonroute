@@ -1,0 +1,26 @@
+<div class="signup center-block jumbotron">
+  <h1>Inscription</h1>
+  <form role="form" (submit)="signup($event, name.value, lastName.value, numberTelephone.value, password.value, email.value)">
+  <div class="form-group">
+    <label for="name">Prénom</label>
+    <input type="text" #username class="form-control" id="prénom" placeholder="Mon prénom">
+  </div>
+  <div class="form-group">
+    <label for="lastName">Nom</label>
+    <input type="text" #username class="form-control" id="nom" placeholder="Mon nom">
+  </div>
+  <div class="form-group">
+    <label for="numberTelephone">numero de téléphone</label>
+    <input type="tel" #username class="form-control" id="téléphone" placeholder="Numero de téléphone">
+  </div>
+  <div class="form-group">
+    <label for="password">Mot de passe</label>
+    <input type="password" #password class="form-control" id="mot de passe" placeholder="Mot de passe">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" #username class="form-control" id="email" placeholder="Mon email">
+  </div>
+  <button type="submit" class="btn btn-default">Valider</button>
+</form>
+</div>
