@@ -39,6 +39,50 @@
 	</md-nav-list>
 </md-card>
 
+
+<md-card style="margin: 15 35 15 35" *ngIf="isReturn==1">
+	<md-card-title>Résultats pour le trajet {{arrival | uppercase}} - {{departure | uppercase}}</md-card-title>
+	Trier par...
+	<md-radio-group>
+	  <md-radio-button value="dateReturn" (change)="onChangeSort($event)">Date</md-radio-button>
+	  <md-radio-button value="durationReturn" (change)="onChangeSort($event)">Durée du trajet</md-radio-button>
+	  <md-radio-button value="ratingReturn" (change)="onChangeSort($event)" >Note</md-radio-button>
+	  <md-radio-button value="seatsReturn" (change)="onChangeSort($event)">Nombre de places</md-radio-button>
+	</md-radio-group>
+	<md-nav-list>
+		<h3 md-subheader>{{offersReturn?.length}} offres de covoiturage</h3>
+	   	<a (click)="showDialog(i)" md-list-item *ngFor="#offerReturn of offersReturn, #i=index">  
+	   	<img md-list-avatar src="img/pp.png" alt="...">
+
+	   	<div class="container" style="width: 100%;">
+	   		<div class="header item">
+	   		
+	   			<span>{{offerReturn.driverName}}</span>
+	   			<br/>
+	   			<div>
+		   			<span class="subtext">{{offerReturn.driverAge}} ans</span>
+		   			<br/>
+		   			<span>{{offerReturn.driverRating}}<i class="material-icons subtext">star</i></span>
+	   			</div>
+	   		</div>
+	   		<div class="middle item">
+	   			<strong>{{getDate(offerReturn.ride.date) | date:"dd/MM hh:mm"}}</strong>
+	   			<br/>
+	   			<span class="primary-bold">{{offerReturn.ride.duration}} min</span>
+	   			<br/>
+	   			<span class="subtext">Véhicule : <span class="primary-bold">{{offerReturn.driverCar}}</span></span>
+	   		</div>
+	   		<div class="right item">
+	   			<span class="accent-bold">{{offerReturn.ride.seatsAvi}} places</span>
+	   		</div>
+	   	</div>		
+	   </a>
+
+	</md-nav-list>
+</md-card>
+
+
+
 <p-dialog style="border: 0" *ngIf="_selectedOffer" header="Confirmer le trajet" [(visible)]="_dialog" class="container">
   <span class="accent-bold">{{_selectedOffer.ride.departure.name}} - {{_selectedOffer.ride.arrival.name}}</span>
   <br>

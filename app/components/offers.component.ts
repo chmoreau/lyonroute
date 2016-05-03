@@ -21,9 +21,14 @@ import {Dialog} from 'primeng/primeng';
 export class OffersComponent implements OnInit {
 	departure: string;
 	arrival: string;
+	isReturn : string;
+	date: string;
+	dateReturn: string;
 	offers: Offer[];
+	offersReturn: Offer[];
 	errorMessage: any;
 	sortingOption: string="duration";
+	sortingOptionReturn: string="durationReturn";
 	private _dialog: boolean = false;
 	private _selectedOffer: Offer;
 	constructor(private _routeParams: RouteParams, private _appService: AppService) {}
@@ -51,11 +56,43 @@ export class OffersComponent implements OnInit {
 				break;
 			}
 		}
+
+		if(event.value!=this.sortingOptionReturn) {
+			switch (event.value) {
+				case "durationReturn":
+					this.sortingOptionReturn = event.value;
+					this.offersReturn.sort((a: Offer, b: Offer) => a.ride.duration - b.ride.duration);
+					break;
+				case "ratingReturn":
+					this.sortingOptionReturn = event.value;
+					this.offersReturn.sort((a: Offer, b: Offer) => -a.driverRating + b.driverRating);
+					break;
+				case "seatsReturn":
+					this.sortingOptionReturn = event.value;
+					this.offersReturn.sort((a: Offer, b: Offer) => a.ride.seatsAvi - b.ride.seatsAvi);
+					break;
+				case "dateReturn":
+					this.sortingOptionReturn = event.value;
+					this.offersReturn.sort((a: Offer, b: Offer) => this.getDate(a.ride.date).getTime() - this.getDate(b.ride.date).getTime());
+					break;
+			}
+		}
 	}
+
+
+
 
 	ngOnInit() {
 		this.departure = this._routeParams.get('departure');
+
 		this.arrival = this._routeParams.get('arrival');
+
+		this.date = this._routeParams.get('date');
+
+		this.dateReturn = this._routeParams.get('dateReturn');
+
+		this.isReturn = this._routeParams.get('isReturn');
+
 		this.getOffers();
 	}
 
@@ -63,7 +100,9 @@ export class OffersComponent implements OnInit {
 		this._appService.getOffers(this.departure, this.arrival)
 		.subscribe(
 			offers => {
-				this.offers = offers
+				this.offers = offers;
+				this.offersReturn = offers;
+
 				// By default, sort the offers by date
 				this.onChangeSort({ value: "date" });
 			},
