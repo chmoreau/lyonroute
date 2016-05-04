@@ -43,7 +43,6 @@ export class MyRidesComponent implements OnInit {
 			error => this.errorMessage = <any>error);
 	}
 	private showDetails(offer: Offer) {
-		console.log(offer);
 		this._showDetails=true;
 		this._departure = offer.ride.departure.name;
 		this._arrival = offer.ride.arrival.name;
