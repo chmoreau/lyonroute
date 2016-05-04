@@ -45,9 +45,10 @@ export class MonProfilComponent implements OnInit {
 					for (let i = 0 ; i<number ; i++) {
 						let i = Math.round(Math.random() * 1000);
 						let j = Math.round(Math.random() * 1000);
-						let offer = this._appService.genereDummyOffer(places[i], places[j]);
+						let k = Math.round(Math.random() * 1000);
+						let offer = this._appService.genereDummyOffer(places[i], places[j],places[k]);
 						this._appService.addOffer(offer)
-							.subscribe(response => console.log(response));
+							.subscribe(response => {console.log(response)});
 					}
 				},
 				error => this.errorMessage = <any>error);

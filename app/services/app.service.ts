@@ -21,10 +21,21 @@ export class AppService {
 	private _signup = "register/";
 	private _subscriptions = "my_inscriptions/";
 	private _userOffers = "my_offers/";
+	private _subscribe = "confirm_offer/";
 
 	getSubscriptions(email: string): Observable<Offer[]> {
 		let url = this._baseUrl + this._subscriptions + email; 
 		return this.http.get(url)
+			.map(this.extractData)
+			.catch(this.handleError);
+	}
+
+	subscribeOffer(idOffer: string, email: string ) {
+		let url = this._baseUrl + this._subscribe;
+		let body = JSON.stringify({ data: { email: email, _id: idOffer } });
+		let headers = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: headers });
+		return this.http.post(url, body, options)
 			.map(this.extractData)
 			.catch(this.handleError);
 	}
@@ -117,12 +128,12 @@ export class AppService {
 		return cars[Math.round(Math.random() * cars.length)];
 	}
 
-	genereDummyOffer(from: string, to: string): any {
-		let departure = { "id": 1, "name": from};
-		let arrival = { "id": 1, "name": to};
+	genereDummyOffer(from: string, to: string, wp: string): any {
+		let departure = {"name": from, "lat": "10", "lng": "10"};
+		let arrival = { "name": to, "lat": "10", "lng": "10" };
 		let name = this.generateName();
 		let offer = {
-			driverEmail: "stancioiu.razvan@yahoo.com",//name+"@lyonroute.com",
+			driverEmail: name+"@mail.com",
 			driverName: name,
 			driverAge: 18+Math.round(Math.random()* 50),
 			driverRating: Math.round(Math.random()*5),
@@ -131,6 +142,7 @@ export class AppService {
 			ride: {
 				departure: departure,
 				arrival : arrival,
+				waypoints: [{ name: wp, lat: "10", lng: "10" }],
 				date: Date.now().toString(),
 				detour: Math.round(Math.random() * 10),
 				seats: 4,

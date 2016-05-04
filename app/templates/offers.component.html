@@ -89,7 +89,7 @@
   <span>{{getDate(_selectedOffer.ride.date) | date:"dd/MM hh:mm"}} ({{_selectedOffer.ride.duration}} min)</span>
   	<div class="flex-end" style="margin-top: 25px">
   		<button (click)="_dialog=false" style="font-weight: bold" md-button>Annuler</button>
-    	<button (click)="_dialog=false" style="font-weight: bold" md-button>Confirmer</button>
+    	<button (click)="subscribeOffer()" style="font-weight: bold" md-button>Confirmer</button>
     </div>
       
 </p-dialog>

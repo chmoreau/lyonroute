@@ -47,7 +47,7 @@
 			<md-card>
 				<md-card-title>Détour</md-card-title>
 				
-				<md-input placeholder="distance additionelle" [(ngModel)]="_detour">
+				<md-input type="number" placeholder="distance additionelle" [(ngModel)]="_detour">
   					<span md-suffix>km</span>
 				</md-input>
 			</md-card>
@@ -55,15 +55,17 @@
 
 			<md-card>
 				<md-card-title>Places disponibles</md-card-title>
-					<md-input placeholder="nombre de places" [(ngModel)]="_seats">
+					<md-input type="number" placeholder="nombre de places" [(ngModel)]="_seats">
 					</md-input>
 
 			</md-card>
 			<md-card>
 
-			<div class="flex-end"> 
-					<button  md-raised-button color="primary" (click)="sendRideOffer()">Publier</button>
-			</div>
+			<div class="container" style="justify-content: space-between; margin-top: 15">
+						<span *ngIf="_publishSuccess" class="primary-bold">Trajet créé avec succès ! Retrouvez-le dans la rubrique "Vos trajets"</span>
+							<span></span>
+							<button  md-raised-button color="primary" (click)="sendRideOffer()">Publier</button>
+						</div>
 			</md-card>
 
        		</div>

@@ -12,6 +12,9 @@ import {Ride} from '../models/ride'
 import {Passenger} from '../models/passenger'
 import {FromToComponent} from "./fromTo.component"
 import {MapComponent} from "./map.component"
+import {AppService} from '../services/app.service'
+import {CookieService} from 'angular2-cookie/core';
+
 
 @Component({
     selector: 'offer-ride',
@@ -22,6 +25,7 @@ import {MapComponent} from "./map.component"
 
 
 export class OfferRideComponent{
+    constructor(private _appService: AppService, private _cookieService: CookieService) { }
     private _departure: string;
     private _arrival: string;
     private _date: string;
@@ -32,6 +36,7 @@ export class OfferRideComponent{
     private _detour: number;
     private _seats: number;
     private _days = ["lun.", "mar.", "mer.", "jeu.", "ven.", "sam.", "dim."];
+    private _publishSuccess: boolean;
 
 
     changeFrequency(value : number){
@@ -48,7 +53,6 @@ export class OfferRideComponent{
     sendRideOffer(){
         let waypoints: Place[];
         let passengers: Passenger[];
-
         let stringFrequencies: string[]=[];
         let days: string[] = ["lun.", "mar.", "mer.", "jeu.", "ven.", "sam.", "dim."];
         let i = 0;
@@ -57,15 +61,31 @@ export class OfferRideComponent{
                 stringFrequencies.push(this._days[i]);
         }
 
-      //  let newRide = new Ride(this.departure, waypoints, this.arrival, this.frequency, this.dateAller, this.detourMax, this.numberFreePlaces, passengers );
-        // send
-
-        if (this._dateReturn)
-            {
-               // let newRide1 = new Ride(this.arrival, waypoints, this.departure, this.frequency, this.dateRetour, this.detourMax, this.numberFreePlaces, passengers );
-                   // send
+        let offer = {
+            driverEmail: this._cookieService.get("email"),
+            driverName: "Pablo",
+            driverAge: 18 + Math.round(Math.random() * 50),
+            driverRating: Math.round(Math.random() * 5),
+            driverCar: "C3",
+            frequency: stringFrequencies,
+            ride: {
+                departure: this._departure,
+                arrival: this._arrival,
+                date: this._date,
+                detour: this._detour,
+                seats: 4,
+                duration: 10 + Math.round(Math.random() * 40),
+                seatsAvi: this._seats,
+                passengers: [{ name: "Dupond" }, { name: "Dupont" }]
             }
-
+        };
+        if(this._departure && this._arrival) {
+            this._appService.addOffer(offer)
+                .subscribe(response => {
+                    this._publishSuccess = true;
+                });
+        }
+        
             
     }
 

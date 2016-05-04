@@ -18,8 +18,8 @@
 							</span>
 							<span> ({{offer.ride.seatsAvi}} places restantes)</span>
 						</span>
-						<span md-line *ngIf="!offer.frequency">Trajet unique</span>
-						<span md-line *ngIf="offer.frequency">
+						<span md-line *ngIf="!offer?.frequency.length">Trajet unique</span>
+						<span md-line *ngIf="offer?.frequency.length">
 							<span>Tous les </span>
 							<span *ngFor="#day of offer.frequency">{{day}} </span>
 						</span>
@@ -42,8 +42,8 @@
 							{{offer.driverName}} • {{offer.driverAge}} ans • {{offer.driverRating}}
 							<i class="material-icons subtext">star</i> • {{offer.driverCar}}
 						</span>
-						<span md-line *ngIf="!offer.frequency">Trajet unique</span>
-						<span md-line *ngIf="offer.frequency">
+						<span md-line *ngIf="!offer?.frequency.length">Trajet unique</span>
+						<span md-line *ngIf="offer?.frequency.length">
 							<span>Tous les </span>
 							<span *ngFor="#day of offer.frequency">{{day}} </span>
 						</span>

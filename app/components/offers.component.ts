@@ -9,6 +9,8 @@ import {MdRadioDispatcher} from '@angular2-material/radio/radio_dispatcher';
 import {AppService} from '../services/app.service';
 import {Offer} from '../models/offer';
 import {Dialog} from 'primeng/primeng';
+import {CookieService} from 'angular2-cookie/core';
+
 
 @Component({
 	selector: 'offers-component',
@@ -29,7 +31,7 @@ export class OffersComponent implements OnInit {
 	sortingOptionReturn: string="durationReturn";
 	private _dialog: boolean = false;
 	private _selectedOffer: Offer;
-	constructor(private _routeParams: RouteParams, private _appService: AppService) {}
+	constructor(private _routeParams: RouteParams, private _appService: AppService, private _cookieService: CookieService) { }
 
 	onChangeSort(event) {
 		if(event.value!=this.sortingOption) {
@@ -88,6 +90,8 @@ export class OffersComponent implements OnInit {
 		this.isReturn = this._routeParams.get('isReturn');
 
 		this.getOffers();
+		if(this.isReturn)
+			this.getReturnOffers();
 	}
 
 	getOffers() {
@@ -96,10 +100,13 @@ export class OffersComponent implements OnInit {
 			offers => {
 				this.offers = offers;
 				// By default, sort the offers by date
+				console.log(this.offers);
 				this.onChangeSort({ value: "date" });
 			},
 			error => this.errorMessage = <any>error);
-		this._appService.getOffers(this.arrival,this.departure)
+	}
+	getReturnOffers() {
+		this._appService.getOffers(this.arrival, this.departure)
 			.subscribe(
 			offers => {
 				this.offersReturn = offers;
@@ -116,5 +123,11 @@ export class OffersComponent implements OnInit {
 	private showDialog(index: number) {
 		this._dialog = true;
 		this._selectedOffer = this.offers[index];
+		
+	}
+
+	subscribeOffer(){
+		this._appService.subscribeOffer(this._selectedOffer._id, this._cookieService.get("email"))
+			.subscribe(response => this._dialog=false);
 	}
 }
