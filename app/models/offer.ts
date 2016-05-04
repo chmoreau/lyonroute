@@ -1,5 +1,6 @@
 import {Ride} from './Ride'
 export class Offer {
+	_id: string;
 	driverName: string;
 	driverAge: number;
 	driverRating: number;

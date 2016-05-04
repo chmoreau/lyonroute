@@ -24,7 +24,7 @@ export class MyRidesComponent implements OnInit {
 	ngOnInit(){
 		let email = this._cookieService.get("email");
 		this.getMyOffers(email);
-		//this.getSubscriptions(email);
+		this.getSubscriptions(email);
 	}
 	getMyOffers(email: string) {
 		this._appService.getUserOffers(email)
@@ -43,6 +43,7 @@ export class MyRidesComponent implements OnInit {
 			error => this.errorMessage = <any>error);
 	}
 	private showDetails(offer: Offer) {
+		console.log(offer);
 		this._showDetails=true;
 		this._departure = offer.ride.departure.name;
 		this._arrival = offer.ride.arrival.name;

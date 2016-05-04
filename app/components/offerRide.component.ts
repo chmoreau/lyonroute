@@ -69,8 +69,8 @@ export class OfferRideComponent{
             driverCar: "C3",
             frequency: stringFrequencies,
             ride: {
-                departure: this._departure,
-                arrival: this._arrival,
+                departure: { name: this._departure, lat : "10", lng: "10" },
+                arrival: { name: this._arrival, lat: "10", lng: "10" },
                 date: this._date,
                 detour: this._detour,
                 seats: 4,

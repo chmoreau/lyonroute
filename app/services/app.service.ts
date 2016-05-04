@@ -142,7 +142,7 @@ export class AppService {
 			ride: {
 				departure: departure,
 				arrival : arrival,
-				waypoints: [{ name: wp, lat: "10", lng: "10" }],
+				waypoints: [{ name: "INSA de Lyon", lat: "10", lng: "10" }],
 				date: Date.now().toString(),
 				detour: Math.round(Math.random() * 10),
 				seats: 4,
