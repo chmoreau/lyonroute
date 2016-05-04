@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="node_modules/primeui/primeui-ng-all.min.css" />
     <script src="node_modules/primeui/primeui-ng-all.min.js"></script>
+     <!-- cookies -->
+    <script src="node_modules/angular2-cookie/bundles/angular2-cookie.min.js"></script>
 
     <!-- 2. Configure SystemJS -->
     <script>
@@ -73,6 +75,7 @@
                   'rxjs': {defaultExtension: 'js'}
             },
             map: {
+                'angular2-cookie' : 'node_modules/angular2-cookie',
                 'angular2': 'node_modules/angular2',
                 'primeng': 'node_modules/primeng',
                 '@angular2-material' : 'node_modules/@angular2-material',

@@ -77,9 +77,6 @@ export class OffersComponent implements OnInit {
 		}
 	}
 
-
-
-
 	ngOnInit() {
 
 		this.departure = this._routeParams.get('departure').replace(new RegExp("%20",'g'), " ");
@@ -98,10 +95,16 @@ export class OffersComponent implements OnInit {
 		.subscribe(
 			offers => {
 				this.offers = offers;
-				this.offersReturn = offers;
-
 				// By default, sort the offers by date
 				this.onChangeSort({ value: "date" });
+			},
+			error => this.errorMessage = <any>error);
+		this._appService.getOffers(this.arrival,this.departure)
+			.subscribe(
+			offers => {
+				this.offersReturn = offers;
+				// By default, sort the offers by date
+				this.onChangeSort({ value: "dateReturn" });
 			},
 			error => this.errorMessage = <any>error);
 	}

@@ -19,6 +19,22 @@ export class AppService {
 	private _makeOffer = "make_offer/";
 	private _login = "login/";
 	private _signup = "register/";
+	private _subscriptions = "my_inscriptions/";
+	private _userOffers = "my_offers/";
+
+	getSubscriptions(email: string): Observable<Offer[]> {
+		let url = this._baseUrl + this._subscriptions + email; 
+		return this.http.get(url)
+			.map(this.extractData)
+			.catch(this.handleError);
+	}
+
+	getUserOffers(email: string): Observable<Offer[]> {
+		let url = this._baseUrl + this._userOffers + email;
+		return this.http.get(url)
+			.map(this.extractData)
+			.catch(this.handleError);
+	}
 	
 	login(email: string, password: string): Observable<any> {
 		let url = this._baseUrl+this._login;

@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, DoCheck} from 'angular2/core';
 import {SearchComponent} from './components/search.component';
 import {OffersComponent} from './components/offers.component';
 import {LoginComponent} from './components/login.component';
@@ -10,6 +10,7 @@ import {MdToolbar} from '@angular2-material/toolbar';
 import {MdButton} from '@angular2-material/button';
 import {AppService} from './services/app.service'
 import {Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import {CookieService} from 'angular2-cookie/core';
 
 @Component({
     selector: 'my-app',
@@ -18,14 +19,20 @@ import {Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular
     				<img class="logo" (click)="goHome()" src="img/logo_inverse.png">
 				  <strong>LyonRoute&nbsp;&nbsp;</strong> <span class="subtext">Un service de covoiturage différent des autres (si, si).</span>
 				  <span class="fill-space"></span>
-				  <button  style="color:white" md-button  (click)="_router.navigate(['OfferRide'])">publier</button>
-				  <button  style="color:white" md-button  (click)="_router.navigate(['Search'])">Rechercher</button>
-				  <button  style="color:white" md-button  (click)="_router.navigate(['MyRides'])">Vos Trajets</button>
-				  <button  style="color:white" md-button  (click)="_router.navigate(['MonProfil'])">Votre Profil</button>
+				  <div *ngIf="_mail">
+					  <button  style="color:white" md-button  (click)="_router.navigate(['OfferRide'])">publier</button>
+					  <button  style="color:white" md-button  (click)="_router.navigate(['Search'])">Rechercher</button>
+					  <button  style="color:white" md-button  (click)="_router.navigate(['MyRides'])">Vos Trajets</button>
+					  <button  style="color:white" md-button  (click)="_router.navigate(['MonProfil'])">Votre Profil</button>
+					  <button  style="color:white" md-button  (click)="logout()">Se déconnecter</button>
+				  </div>
+				  <div *ngIf="!_mail">
+					  <button  style="color:white" md-button  (click)="_router.navigate(['Login'])">se connecter</button>
+				  </div>
 				</md-toolbar>
   				<router-outlet></router-outlet>`,
     directives: [ROUTER_DIRECTIVES, MdToolbar, MdButton],
-    providers: [AppService, ROUTER_PROVIDERS]
+    providers: [AppService, ROUTER_PROVIDERS, CookieService]
 })
 
 @RouteConfig([
@@ -68,10 +75,22 @@ import {Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular
 
 ])
 
-export class AppComponent {
-	constructor(private _router: Router) {
+export class AppComponent implements DoCheck{
+	_mail: string;
+	constructor(private _router: Router, private _cookieService: CookieService) {
+		this._mail = this._cookieService.get("email");
 	}	
 	private goHome() {
 		this._router.navigate(['Search']);
+	}
+	private logout() {
+		this._cookieService.remove("email");
+		this._mail = "";
+		this._router.navigate(['Login']);
+	}
+	ngDoCheck() {
+		if(!this._mail){
+			this._mail = this._cookieService.get("email");
+		}
 	}
 }

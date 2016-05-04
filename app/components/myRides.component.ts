@@ -4,6 +4,7 @@ import {AppService} from '../services/app.service'
 import {Offer} from '../models/offer'
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list'
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card'
+import {CookieService} from 'angular2-cookie/core';
 
 @Component({
     selector: 'my-rides',
@@ -12,7 +13,7 @@ import {MD_CARD_DIRECTIVES} from '@angular2-material/card'
 
 })
 export class MyRidesComponent implements OnInit {
-	constructor(private _appService: AppService) {}
+	constructor(private _appService: AppService, private _cookieService: CookieService) { }
 	offers: Offer[];
 	subscriptions: Offer[];
 	errorMessage: any;
@@ -21,17 +22,18 @@ export class MyRidesComponent implements OnInit {
 	private _waypoints: string[];
 	private _showDetails: boolean = false;
 	ngOnInit(){
-		this.getMyOffers();
-		this.getSubscriptions();
+		let email = this._cookieService.get("email");
+		this.getMyOffers(email);
+		this.getSubscriptions(email);
 	}
-	getMyOffers() {
-		this._appService.getOffers()
+	getMyOffers(email: string) {
+		this._appService.getUserOffers(email)
 			.subscribe(
 			offers => this.offers = offers,
 			error => this.errorMessage = <any>error);
 	}
-	getSubscriptions() {
-		this._appService.getOffers()
+	getSubscriptions(email: string) {
+		this._appService.getSubscriptions(email)
 			.subscribe(
 			offers => this.subscriptions = offers,
 			error => this.errorMessage = <any>error);

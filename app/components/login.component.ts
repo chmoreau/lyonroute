@@ -6,6 +6,8 @@ import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
 import {MdButton} from '@angular2-material/button';
 import {MdCheckbox} from '@angular2-material/checkbox';
 import {MdToolbar} from '@angular2-material/toolbar';
+import {CookieService} from 'angular2-cookie/core';
+
 
 @Component({
 	selector: 'login',
@@ -13,7 +15,7 @@ import {MdToolbar} from '@angular2-material/toolbar';
 	directives: [RouterLink, MD_CARD_DIRECTIVES, MD_INPUT_DIRECTIVES, MdButton, MdCheckbox, MdToolbar],
 })
 export class LoginComponent {
-	constructor(private _appService: AppService, private _router: Router) {}
+	constructor(private _appService: AppService, private _router: Router, private _cookieService: CookieService) { }
 	email: string = "";
 	password: string = "";
 	private _invalidLogin = false;
@@ -23,6 +25,7 @@ export class LoginComponent {
 			.login(this.email,this.password)
 			.subscribe(response => {
 				if(response.res) {
+					this._cookieService.put("email", response.email);
 					this._router.navigate(['Search']);
 				}
 				else{
